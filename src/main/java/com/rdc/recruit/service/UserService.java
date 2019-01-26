@@ -7,6 +7,7 @@ import com.rdc.recruit.util.CheckImgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -18,7 +19,6 @@ public class UserService {
     private UserMapper userMapper;
 
     public String add(User user){
-        System.out.println(user.getName());
         if(1!=userMapper.add(user))
             return "报名失败！";
         else
@@ -26,11 +26,13 @@ public class UserService {
     }
 
 
-    public CheckPicture getCheckPicture() throws IOException {
+    public CheckPicture getCheckPicture(HttpSession session) throws IOException {
         Random random = new Random();
         int oriPicture = random.nextInt(3);
         File originalFile = new File(oriPicture + ".jpg");
         CheckPicture checkPicture = CheckImgUtil.pictureCut(originalFile,"jpg");
+        session.setAttribute("oriX",checkPicture.getX());
+        session.setAttribute("oriY",checkPicture.getY());
         return checkPicture;
     }
 }
