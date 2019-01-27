@@ -4,6 +4,7 @@ import com.rdc.recruit.bean.CheckPicture;
 import com.rdc.recruit.dao.UserMapper;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.util.CheckImgUtil;
+import com.rdc.recruit.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,17 +19,25 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public String add(User user){
+    public String add(User user,Integer X,Integer Y,HttpSession session){
+        System.out.println(session);
+        int oriX = (int) session.getAttribute("oriX");
+        int oriY = (int) session.getAttribute("oriY");
+        if(X<oriX-10 || X>oriX+10 || Y<oriY-10 || Y>oriY+10)
+            return "验证码验证失败";
+        if(StringUtil.isEmpty(user.getName())||StringUtil.isEmpty(user.getStudentId())||StringUtil.isEmpty(user.getContact())||
+                StringUtil.isEmpty(user.getProfessionClass())||StringUtil.isEmpty(user.getDirection()))
+            return "必填信息不能为空";
         if(1!=userMapper.add(user))
-            return "报名失败！";
+            return "报名失败";
         else
-            return "报名成功！";
+            return "报名成功";
     }
 
 
     public CheckPicture getCheckPicture(HttpSession session) throws IOException {
         Random random = new Random();
-        int oriPicture = random.nextInt(3);
+        int oriPicture = random.nextInt(3)+1;
         File originalFile = new File(oriPicture + ".jpg");
         CheckPicture checkPicture = CheckImgUtil.pictureCut(originalFile,"jpg");
         session.setAttribute("oriX",checkPicture.getX());

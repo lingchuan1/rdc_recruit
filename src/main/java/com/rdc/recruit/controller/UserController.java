@@ -22,9 +22,9 @@ public class UserController {
 
     @IpRequest
     @RequestMapping(value = "/add",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
-    public String add(User user){
+    public String add(User user,Integer X,Integer Y,HttpSession session){
         System.out.println(user);
-        return userService.add(user);
+        return userService.add(user,X,Y,session);
     }
 
     @RequestMapping(value = "/getCheckPicture",method = RequestMethod.GET)

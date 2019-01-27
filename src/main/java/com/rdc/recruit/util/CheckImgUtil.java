@@ -78,8 +78,6 @@ public class CheckImgUtil {
         // 源文件图像矩阵
         int[][] oriImageData = getData(oriImage);
 
-        System.out.println(oriImageData.length);
-        System.out.println(oriImageData[0].length);
         //copy 源图做不透明处理
         for (int i = 0; i < oriImageData.length; i++) {
             for (int j = 0; j < oriImageData[0].length; j++) {

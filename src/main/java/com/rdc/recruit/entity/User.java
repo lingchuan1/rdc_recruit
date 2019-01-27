@@ -3,13 +3,13 @@ package com.rdc.recruit.entity;
 public class User {
 
     private Integer id;
-    private String studentId;
-    private String name;
-    private int sex;
-    private String professionClass;
-    private String direction;
-    private String contact;
-    private String introduction;
+    private String studentId;  //学号
+    private String name;  //姓名
+    private int sex;  //性别
+    private String professionClass;  //专业班级
+    private String direction;  //方向(前端，后台，安卓，大数据)
+    private String contact;  //手机号码
+    private String introduction;  //自我介绍
 
     public Integer getId() {
         return id;
