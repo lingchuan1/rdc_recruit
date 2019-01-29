@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserMapper {
 
-    @Insert("insert into user(studentId,userName,sex,professional_class,direction) values (#{studentId},#{name},#{sex},#{professionClass},#{direction})")
+    @Insert("insert into user(student_id,name,sex,profession_class,direction,contact,introduction) values (#{studentId},#{name},#{sex},#{professionClass},#{direction},#{contact},#{introduction})")
     int add(User user);
 }
