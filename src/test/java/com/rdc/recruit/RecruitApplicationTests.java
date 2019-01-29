@@ -42,5 +42,9 @@ public class RecruitApplicationTests {
         fout1.close();
     }
 
+    @Test
+    public void test(){
+    }
+
 }
 

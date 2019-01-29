@@ -51,31 +51,4 @@ public class AccessUtil {
         return ip;
     }
 
-
-    //获取访问地址，用户信息
-    public static  String getAccessInfo(JoinPoint point){
-        StringBuffer accessInfo = new StringBuffer();
-        Object[] args = point.getArgs();
-        HttpServletRequest servletRequest = null;
-        HttpSession httpSession = null;
-        for(int i=0;i<args.length;i++) {
-            if(args[i] instanceof HttpServletRequest){
-                servletRequest =  (HttpServletRequest) args[i];
-                httpSession = servletRequest.getSession();
-                String phone = (String) httpSession.getAttribute("phone");
-                accessInfo.append("[accessIP]=")
-                        .append(getIpAddress(servletRequest))
-                        .append(" ,[phone]=")
-                        .append(phone).append(" ,");
-            }
-        }
-        accessInfo.append("[request]=")
-//			.append(point.getSignature().getDeclaringTypeName()).append(".")
-//			.append(point.getSignature().getName())
-//			.append(point.getStaticPart().toString())
-                .append(point.getSignature().toString())
-                .append(" ,[params]>>>>>");
-        //.append(GsonUtil.getSuccessJson(point.getArgs()));
-        return accessInfo.toString();
-    }
 }
