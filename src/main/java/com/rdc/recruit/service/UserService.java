@@ -4,6 +4,7 @@ import com.rdc.recruit.bean.CheckPicture;
 import com.rdc.recruit.dao.UserMapper;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.util.CheckImgUtil;
+import com.rdc.recruit.util.FileUtil;
 import com.rdc.recruit.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 @Service
@@ -50,7 +52,9 @@ public class UserService {
     public CheckPicture getCheckPicture(HttpSession session) throws IOException {
         Random random = new Random();
         int oriPicture = random.nextInt(3)+1;
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("static/" + oriPicture + ".jpg");
         File originalFile = new File(oriPicture + ".jpg");
+        FileUtil.inputStreamToFile(inputStream,originalFile);
         CheckPicture checkPicture = CheckImgUtil.pictureCut(originalFile,"jpg");
         session.setAttribute("oriX",checkPicture.getX());
         session.setAttribute("oriY",checkPicture.getY());
