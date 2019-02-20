@@ -3,7 +3,6 @@ package com.rdc.recruit.service;
 import com.rdc.recruit.dao.UserMapper;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.util.StringUtil;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +13,6 @@ public class UserService {
     private UserMapper userMapper;
 
     public String add(User user){
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("result","success");
         if(StringUtil.isEmpty(user.getName())||StringUtil.isEmpty(user.getStudentId())||StringUtil.isEmpty(user.getContact())||
                 StringUtil.isEmpty(user.getProfessionClass())||StringUtil.isEmpty(user.getDirection()))
             return "必填信息不能为空";

@@ -1,7 +1,6 @@
 package com.rdc.recruit.controller;
 
 import com.rdc.recruit.annotation.IpRequest;
-import com.rdc.recruit.bean.CheckPicture;
 import com.rdc.recruit.config.GeetestConfig;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.service.UserService;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.HashMap;
 
 @RestController
