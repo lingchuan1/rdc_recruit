@@ -21,18 +21,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @IpRequest
-    @RequestMapping(value = "/add",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
-    public String add(User user,Integer X,Integer Y,HttpSession session){
-        System.out.println(user);
-        return userService.add(user,X,Y,session);
-    }
-
-    @RequestMapping(value = "/getCheckPicture",method = RequestMethod.GET)
-    public CheckPicture getCheckPicture(HttpSession session) throws IOException {
-        return userService.getCheckPicture(session);
-    }
-
     @GetMapping(value = "/init")
     public String geetestStart(HttpSession session){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
@@ -55,6 +43,7 @@ public class UserController {
         return resStr;
     }
 
+    @IpRequest
     @PostMapping(value = "/validateAndAdd")
     public String validateAndAdd(User user,HttpSession session,String validate,String challenge,String seccode){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
