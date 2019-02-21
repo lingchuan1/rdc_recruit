@@ -19,6 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @GetMapping(value = "/init")
     public String geetestStart(HttpSession session){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
@@ -41,6 +42,7 @@ public class UserController {
         return resStr;
     }
 
+    @CrossOrigin
     @IpRequest
     @PostMapping(value = "/validateAndAdd")
     public String validateAndAdd(User user,HttpSession session,String validate,String challenge,String seccode){
