@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    position: relative;
+    /* position: relative; */
 }
 
 body {
@@ -91,7 +91,7 @@ body {
 .h-nav ul {
     list-style: none;
     overflow: hidden;
-    text-align: right;
+    text-align: center;
     float: right;
 }
 
@@ -107,7 +107,7 @@ body {
 
 .h-nav ul li {
     display: inline-block;
-    margin-left: 35px;
+    margin-right: 45px;
     line-height: 1.5;
 }
 
@@ -123,8 +123,28 @@ body {
     color: #888888;
     text-transform: uppercase;
     font-size: 18px;
+    position: relative;
 }
 
+.h-nav ul li a:hover .b_fa{
+    color: #4fa79b; 
+}
+
+.h-nav ul li a:hover{
+    color: #4fa79b; 
+}
+
+.list_underline{
+    border-bottom: #4fa79b 2px solid;
+    display: none;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+}
+.b_fa{
+    font-size: 1.3em!important;
+    padding-right: 5px;
+}
 .mobile-toggle {
     display: none;
     cursor: pointer;
@@ -691,6 +711,8 @@ i {
 
 .contentform {
     padding: 40px 30px;
+    position: relative;
+    /* 此处没有    position: relative;  会影响到导航的fixed布局 */
 }
 
 .bouton-contact {
