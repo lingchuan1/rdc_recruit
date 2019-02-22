@@ -24,7 +24,7 @@ public class UserController {
     public String geetestStart(HttpSession session){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
         String resStr = "{}";
-        String userid = "test";
+        String userid = "test"; 
 
         //自定义参数,选择性添加
         HashMap<String, String> param = new HashMap<>();
