@@ -65,7 +65,7 @@ $(document).ready(function () {
   $('.snip1091').click(function (event) {
     var index = $(this).parent().index();
     $('input:radio[name="rb"]').eq(index).attr("checked", true);
-    $('input:radio[name="rb"]').not($('input:radio[name="rb"]').eq(index)).attr("checked", false);
+    // $('input:radio[name="rb"]').not($('input:radio[name="rb"]').eq(index)).attr("checked", false);
     changeTeam();
     var offset = 70;
     var target = $('.sec03').offset().top - offset;
