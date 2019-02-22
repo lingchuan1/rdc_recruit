@@ -156,6 +156,7 @@
         var url = normalizePath(path) + normalizeQuery(query);
         if (domain) {
             url = protocol + domain + url;
+            //console.log(url)
         }
 
         return url;
@@ -230,11 +231,14 @@
     }
     var initGeetest = function (userConfig, callback) {
         var config = new Config(userConfig);
-        if (userConfig.https) {
-            config.protocol = 'https://';
-        } else if (!userConfig.protocol) {
-            config.protocol = window.location.protocol + '//';
-        }
+        // console.log(userConfig)
+        // if (userConfig.https) {
+        //     config.protocol = 'https://';
+        // } else if (!userConfig.protocol) {
+        //     config.protocol = window.location.protocol + '//';
+        // }
+        //此处强行更改
+        config.protocol = 'https://';
         jsonp([config.api_server || config.apiserver], config.type_path, config, function (newConfig) {
             var type = newConfig.type;
             var init = function () {

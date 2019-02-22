@@ -1,216 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1">
-    <title>极验证demo</title>
-    <style>
-        body {
-            margin: 50px 0;
-            text-align: center;
-            font-family: "PingFangSC-Regular", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
-        }
-        .inp {
-            border: 1px solid #cccccc;
-            border-radius: 2px;
-            padding: 0 10px;
-            width: 278px;
-            height: 40px;
-            font-size: 18px;
-        }
-        .btn {
-            border: 1px solid #cccccc;
-            border-radius: 2px;
-            width: 100px;
-            height: 40px;
-            font-size: 16px;
-            color: #666;
-            cursor: pointer;
-            background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
-        }
-        .btn:hover {
-            background: white linear-gradient(0deg, #ffffff 0%, #f3f3f3 100%)
-        }
-        #captcha1,
-        #captcha2 {
-            width: 300px;
-            display: inline-block;
-        }
-        .show {
-            display: block;
-        }
-        .hide {
-            display: none;
-        }
-        #notice1,
-        #notice2 {
-            color: red;
-        }
-        label {
-            vertical-align: top;
-            display: inline-block;
-            width: 80px;
-            text-align: right;
-        }
-        #wait1, #wait2 {
-            text-align: left;
-            color: #666;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-<h1>Demo</h1>
-<hr>
-<form action="/user/validateAndAdd" method="post">
-    <h2>大图点击demo 使用表单进行二次验证</h2>
-    <br>
-    <div>
-        <label for="username1">用户名:</label>
-        <input class="inp" id="username1" type="text" value="极限验证">
-    </div>
-    <br>
-    <div>
-        <label for="password1">密码:</label>
-        <input class="inp" id="password1" type="password" value="******">
-    </div>
-    <br>
-    <div>
-        <label>完成验证:</label>
-        <div id="captcha1">
-            <p id="wait1" class="show">正在加载验证码.....</p>
-        </div>
-    </div>
-    <br>
-    <input class="btn" id="submit1" type="submit" value="提交">
-</form>
-<!-- 注意，验证码本身是不需要 jquery 库，此处使用 jquery 仅为了在 demo 使用，减少代码量 -->
-<script type="application/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
 
-<!-- 引入 gt.js，既可以使用其中提供的 initGeetest 初始化函数 -->
-<script src="/js/gt.js"></script>
-<script>
-    var handler1 = function (captchaObj) {
-        $("#submit1").click(function (e) {
-            var result = captchaObj.getValidate();
-            if (!result) {
-                $("#notice1").show();
-                setTimeout(function () {
-                    $("#notice1").hide();
-                }, 2000);
-                e.preventDefault();
-            }
-        });
-        // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
-        captchaObj.appendTo("#captcha1");
-        captchaObj.onReady(function () {
-            $("#wait1").hide();
-        });
-        // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
-    };
-    $.ajax({
-        url: "/user/init?t=" + (new Date()).getTime(), // 加随机数防止缓存
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-            // 调用 initGeetest 初始化参数
-            // 参数1：配置参数
-            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
-            initGeetest({
-                gt: data.gt,
-                challenge: data.challenge,
-                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
-                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-                product: "float", // 产品形式，包括：float，popup
-                width: "100%"
-                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
-            }, handler1);
-        }
-    });
-</script>
-<br><br>
-<hr>
-<form>
-    <h2>滑动demo，使用ajax进行二次验证</h2>
-    <br>
-    <div>
-        <label for="username2">用户名：</label>
-        <input class="inp" id="username2" type="text" value="极验验证">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="../static/image/logo3.png" type="image/x-icon">
+  <link rel='stylesheet' type='text/css' href="../static/css/nav.css">
+  <link rel='stylesheet' type='text/css' href="../static/css/img-hover.css">
+  <link rel='stylesheet' type='text/css' href="../static/css/slides.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/navigation-bar.css">
+  <link rel="stylesheet" href="../static/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" language="javascript" src="../static/js/jquery-1.10.2.min.js"></script>
+  <script type='application/javascript' src='../static/js/fastclick.js'></script>
+  <title>RDC招新系统</title>
+</head>
+
+<body>
+  <header class="main_h">
+    <div class="row">
+      <a class="logo" href="#"><img src="../static/image/RDC-Blog.png" alt=""></a>
+      <div class="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="h-nav">
+        <ul>
+          <li><a href=".sec01">首页</a></li>
+          <li><a href=".sec02">项目组</a></li>
+          <li><a href=".sec03">招新报名</a></li>
+          <li><a href=".sec04">关于研发</a></li>
+        </ul>
+      </div>
+    </div> <!-- / row -->
+  </header>
+
+  <div class="banner">
+    <h1 class="sec01"><span>RDC 研发中心</span>（2019）<br> </h1>
+    <h2>正在招新</h2>
+    <div class="mouse">
+      <span></span>
     </div>
-    <br>
-    <div>
-        <label for="password2">密码：</label>
-        <input class="inp" id="password2" type="password" value="123456">
-    </div>
-    <br>
-    <div>
-        <label>完成验证：</label>
-        <div id="captcha2">
-            <p id="wait2" class="show">正在加载验证码......</p>
+  </div>
+
+  <div class="row content">
+    <!--项目组介绍标题-->
+    <div class="subtitle">
+      <div class="sec02 lead1">项目组简介</div>
+      <div class="login_content">
+        <div id="lline"></div>
+        <div id="cline">
+          <p class="lead2 title-small">
+            研发中心现分支四大方向小组
+          </p>
+          <div class="border"></div>
         </div>
+        <div id="rline"></div>
+        <div style="clear: both;"></div>
+      </div>
     </div>
-    <br>
-    <p id="notice2" class="hide">请先完成验证</p>
-    <input class="btn" id="submit2" type="submit" value="提交">
-</form>
-<script>
-    var handler2 = function (captchaObj) {
-        $("#submit2").click(function (e) {
-            var result = captchaObj.getValidate();
-            if (!result) {
-                $("#notice2").show();
-                setTimeout(function () {
-                    $("#notice2").hide();
-                }, 2000);
-            } else {
-                $.ajax({
-                    url: '/user/validateAndAdd',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        username: $('#username2').val(),
-                        password: $('#password2').val(),
-                        challenge: result.geetest_challenge,
-                        validate: result.geetest_validate,
-                        seccode: result.geetest_seccode
-                    },
-                    success: function (data) {
-                        if (data.status === 'success') {
-                            alert('登录成功');
-                        } else if (data.status === 'fail') {
-                            alert('登录失败');
-                        }
-                    }
-                })
-            }
-            e.preventDefault();
-        });
-        // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
-        captchaObj.appendTo("#captcha2");
-        captchaObj.onReady(function () {
-            $("#wait2").hide();
-        });
-        // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
-    };
-    $.ajax({
-        url: "/user/init?t=" + (new Date()).getTime(), // 加随机数防止缓存
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-            // 调用 initGeetest 初始化参数
-            // 参数1：配置参数
-            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
-            initGeetest({
-                gt: data.gt,
-                challenge: data.challenge,
-                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
-                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-                product: "popup", // 产品形式，包括：float，popup
-                width: "100%"
-                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
-            }, handler2);
-        }
-    });
-</script>
+    <!-- <h1 class="sec02 title">项目组简介</h1>
+    <p class="title-small">研发中心现分支四大方向小组</p> -->
+    <div class="direList">
+      <div class="direElement">
+        <img src="../static/image/frontlogo.png" alt="Web前端">
+        <p class="direHeader">Web前端</p>
+        <p class="direInfo">RDC Web前端开发组，专注于呈现良好的网站界面和网页交互，提供给用户更好的视觉冲击和用户体验，是当前就业面最广的方向。</p>
+      </div>
+      <div class="direElement">
+        <img src="../static/image/backstagelogo.png" alt="后台开发">
+        <p class="direHeader">后台开发</p>
+        <p class="direInfo">RDC后台开发组致力于JavaWeb开发，专注于各种前沿的Java技术和实践能力的结合，主要任务是进行业务逻辑的处理和与数据库、服务器等的交互。</p>
+      </div>
+      <div class="direElement" style="margin-bottom:3px;">
+        <img src="../static/image/andriodlogo.png" alt="Android开发">
+        <p class="direHeader">Android开发</p>
+        <p class="direInfo">RDC Android开发组，是RDC工作室安卓App项目的核心研发团队，专注基于Java语言的主流app开发与Android技术的钻研。</p>
+      </div>
+      <div class="direElement">
+        <img src="../static/image/bigdata2.png" alt="大数据组">
+        <p class="direHeader">大数据组</p>
+        <p class="direInfo">研发中心大数据组致力于挖掘数据、分析数据。既专注于基础，又落实于项目；既沉浸于原理，又回归到兴趣。</p>
+      </div>
+      <div class="clrfix"></div>
+    </div>
+    <h1 class="little-title">分组详细介绍</h1>
+    <div class="team-itrd">
+      <div class="teams">
+        <figure class="snip1091 green" title="立即报名"><img src="../static/image/web1.jpg" alt="研发前端组" title="立即报名" />
+          <figcaption>
+            <h2>Web <span>前端</span></h2>
+          </figcaption><a></a>
+        </figure>
+        <div class="team-text">
+          <a class="team-header sec05">
+            Web前端开发
+          </a>
+          <p class="team-info">
+            基于HTML/CSS/Javascript前端语言进行开发，专注于呈现良好的网站界面和网页交互，提供给用户更好的视觉冲击和用户体验，是当前就业面最广的方向。组内定期开展技术分享会，与此同时，一些已经进入阿里、腾讯实习工作的师兄师姐也会经常与我们进行经验交流和指导。在技术实力雄厚的同时，最重要的一点是，我们有最和谐的性别比例和不能更融洽的相处气氛，宇宙工大之下，可谓出淤泥而不染，实属难得。
+          </p>
+          <p class="team-info">
+            我们需要：基本的C语言理解，0或0以上的前端基础，不止的学习热忱，出色的学习能力，良好的全局把控力，还有最重要的一点是，细腻。当然，如果你有良好的审美或是一定的PS基础，那面试时可能会获得一定印象分哦~
+          </p>
+          <p class="team-info">
+            假如你曾想过给自己写一个符合自己所有想象的个人主页；假如你曾想过在一个特殊的日子里用网页的形式给喜欢的人送上一份特殊的礼物；又或者你曾想过会有一个网页，当你打开的时候，里面用着你最喜欢的表达方式，写满了你的全部故事。
+          </p>
+          <p class="team-info">
+            基于HTML/CSS，研发前端组，一个情怀和实力兼具的队伍。如果你是一个充满想象的人，过来拥抱我们。
+          </p>
+        </div>
+        <div class="clrfix"></div>
+      </div>
+      <div class="teams">
+        <figure class="snip1091 blue" title="立即报名"><img src="../static/image/java1.jpg" alt="研发后台组" title="立即报名" />
+          <figcaption>
+            <h2>java <span>后台开发</span></h2>
+          </figcaption><a></a>
+        </figure>
+        <div class="team-text">
+          <a class="team-header sec06">
+            Java后台开发
+          </a>
+          <p class="team-info">
+            研发后台小组一直致力于JavaWeb开发，专注于各种前沿的Java技术学习和实践能力的结合，主要任务是进行业务逻辑的处理和与数据库、服务器等的交互。我们在网络建设、网络改版、数据处理，数据交互等方面都积累了自己独特的经验并取得了良好的成绩。后台开发与各小组相辅相成，无论是安卓端还是网页端，都需要后台技术的支持，只有和服务器进行沟通，才能成为一个完整的产品。
+          </p>
+          <p class="team-info">
+            研发后台采用自主学习，自由学习，积极交流的模式，组员各有所长。后台组鼓励组员拓宽学习范围，均衡发展。组内经常举行内部交流，定期举行内部活动，从而提升技术，增进彼此感情。
+          </p>
+          <p class="team-info">
+            如果你具备基本的C语言基础、对Java编程感兴趣，具有满腔的学习热情，出色的学习能力以及良好的团队协作精神，想学习数据库和服务器，想成为一个幕后操作者，那么研发后台组是你的不二选择。
+          </p>
+        </div>
+        <div class="clrfix"></div>
+      </div>
+      <div class="teams">
+        <figure class="snip1091 red" title="立即报名"><img src="../static/image/Android2.png" alt="研发安卓组" title="立即报名" />
+          <figcaption>
+            <h2>Android <span>移动开发</span></h2>
+          </figcaption><a></a>
+        </figure>
+        <div class="team-text">
+          <a class="team-header sec07">
+            Android移动开发
+          </a>
+          <p class="team-info">
+            Android开发组，是RDC工作室安卓App项目的核心研发团队，专注基于Java语言的主流app开发与Android技术的钻研。我们采用自由高效的管理模式、自由的时间安排，定期的技术分享会与师兄经验交流会等；拥有融洽的技术氛围，遇到技术难题，随时提问，一起探讨解决方法；培养友好的内部关系，消除年级隔阂，和谐相处。
+          </p>
+          <p class="team-info">
+            研发Android组有着一群志同道合的朋友，跟你一起探索Android的神秘王国，深入学习Java和Android。除了项目之外，倘若你还有其他新颖可行的想法，还能开发出各种炫酷的App或是小游戏给大家使用。
+          </p>
+          <p class="team-info">
+            假如你热爱技术、热爱Android，拥有扎实的C语言基础（有Java或Android基础更佳），善于自主钻研，有责任感并有良好的团队合作精神，那么，你正是我们苦苦寻找的小伙伴！加入我们吧，不仅能感受浓厚的学习氛围、还能积累项目经验、更有可能获得师兄的内推机会哟~
+          </p>
+        </div>
+        <div class="clrfix"></div>
+      </div>
+      <div class="teams">
+        <figure class="snip1091 yellow"><img src="../static/image/bigdata1.jpg" alt="研发大数据组" title="立即报名" />
+          <figcaption>
+            <h2>大数据 <span></span></h2>
+          </figcaption><a></a>
+        </figure>
+        <div class="team-text" title="立即报名">
+          <a class="team-header sec08">
+            大数据组
+          </a>
+          <p class="team-info">
+            信息爆炸，身处于互联网时代的我们怎能视庞大的数据而不见。研发中心大数据组致力于挖掘数据、分析数据。既专注于基础，又落实于项目；既沉浸于原理，又回归到兴趣。大数据组是研发中心最年轻的小组，但我们拥有更多的可能去开拓、去创造无限的可能。
+          </p>
+          <p class="team-info">
+            研发大数据组采取自由学习，定期交流的模式。我们鼓励大家向自己感兴趣的方向大胆的探索，同时通过小组交流，一方面督促组员不断学习，另一方面组员之间互相汲取经验，在各自的空间中充分发挥。因为年轻，所以无限可能，只要你愿意为你的梦想付出努力，研发定为你的破浪前行而喝彩。
+          </p>
+          <p class="team-info">
+            如果你对人工智能充满了向往，对深度学习充满兴趣，无惧抽象的数学，志在拥抱最前沿的技术；如果你善于自主钻研，有责任感，以及良好的团队合作精神和分享精神；如果你厌倦平凡机械的生活，享受对未知的探索与前行；请大胆的选择我们大数据组，丰富的资源，和谐的氛围，只为让你成为研发新的闪亮点！
+          </p>
+        </div>
+        <div class="clrfix"></div>
+      </div>
+      <div class="clrfix"></div>
+    </div>
+    <!--招新流程标题-->
+    <div class="subtitle">
+      <div class="sec03 lead1">招新流程——报名</div>
+      <div class="login_content">
+        <div id="lline"></div>
+        <div id="cline">
+          <p class="lead2 title-small">
+            确认过眼神，你是对的人
+          </p>
+          <div class="border"></div>
+        </div>
+        <div id="rline"></div>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+    <div class="form-countainer">
+      <div class="form">
+        <h1>2019研发中心招新报名表 <span id="team-choice"></span></h1>
+        <div class="contentform">
+          <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
+          <div class="leftcontact">
+
+            <div class="form-group">
+              <p>姓名 <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-user"></i></span>
+              <input type="text" name="name" id="name" data-rule="'/[^\u4e00-\u9fa5|a-z|A-Z]/g'" maxlength="6"/>
+              <div class="validation">请输入真实姓名</div>
+            </div>
+            <div class="form-group">
+              <p>性别<span>*</span></p>
+              <div class="sex-choices radio-choices">
+                <input type="radio" name="mb" id="mb1" value="0"/>
+                <label for="mb1"><i class="fa fa-male fa-mb"></i><span>男</span></label>
+                <input type="radio" name="mb" id="mb2" value="1"/>
+                <label for="mb2"><i class="fa fa-female fa-mb"></i>女</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <p>学号 <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-info"></i></span>
+              <input type="text" name="studentId" id="studentId" data-rule="/[^\d]/g" maxlength="12"/>
+              <div class="validation">输入格式错误</div>
+            </div>
+
+            <div class="form-group">
+              <p>报名方向 <span>*</span></p>
+              <div class="team-choices radio-choices">
+                <input type="radio" name="rb" id="rb1" value="前端"/>
+                <label for="rb1"><span>Web前端</span></label>
+                <input type="radio" name="rb" id="rb2" value="后台"/>
+                <label for="rb2">java后台</label>
+                <input type="radio" name="rb" id="rb3" value="安卓"/>
+                <label for="rb3">Android移动</label>
+                <input type="radio" name="rb" id="rb4" value="大数据"/>
+                <label for="rb4">大数据</label>
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <p>E-mail <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
+              <input type="email" name="email" id="email" data-rule="email"
+                data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire." />
+              <div class="validation"></div>
+            </div>
+
+            <div class="form-group">
+              <p>Company <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-home"></i></span>
+              <input type="text" name="society" id="society" data-rule="required"
+                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné." />
+              <div class="validation"></div>
+            </div> -->
+            <!-- 
+            <div class="form-group">
+              <p>Postcode <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-map-marker"></i></span>
+              <input type="text" name="postal" id="postal" data-rule="required"
+                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Code postal' doit être renseigné." />
+              <div class="validation"></div>
+            </div> -->
+
+          </div>
+          <div class="rightcontact">
+
+            <!-- <div class="form-group">
+              <p>city<span>*</span></p>
+              <span class="icon-case"><i class="fa fa-building-o"></i></span>
+              <input type="text" name="ville" id="ville" data-rule="required"
+                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné." />
+              <div class="validation"></div>
+            </div> -->
+
+            <div class="form-group">
+              <p>专业班级<span>*</span></p>
+              <span class="icon-case"><i class="fa fa-location-arrow"></i></span>
+              <input type="text" name="professionClass" id="professionClass" data-rule="required"/>
+              <div class="validation"></div>
+            </div>
+
+            <div class="form-group">
+              <p>手机号码<span>*</span></p>
+              <span class="icon-case"><i class="fa fa-phone"></i></span>
+              <input type="text" name="contact" id="contact" data-rule="/[^\d-+]/g"  maxlength="11"/>
+              <div class="validation">输入格式错误</div>
+            </div>
+
+            <!-- <div class="form-group">
+              <p>Subject <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-comment-o"></i></span>
+              <input type="text" name="sujet" id="sujet" data-rule="required"
+                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Sujet' doit être renseigné." />
+              <div class="validation"></div>
+            </div> -->
+
+            <div class="form-group">
+              <p>自我介绍<span>*</span></p>
+              <span class="icon-case"><i class="fa fa-comments-o"></i></span>
+              <textarea name="introduction" id="introduction" rows="14" data-rule="required" maxlength="200"></textarea>
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <div id="captcha2">
+                <p id="wait2" class="show">正在加载验证码......</p>
+              </div>
+            </div>
+          </div>
+          <div class="clrfix"></div>
+        </div>
+
+        <button id="submit2" type="submit" class="bouton-contact">开启你的研发之旅</button>
+
+      </div>
+    </div>
+    <!--关于研发标题-->
+    <div class="subtitle">
+      <div class="sec04 lead1">关于研发</div>
+      <div class="login_content">
+        <div id="lline"></div>
+        <div id="cline">
+          <p class="lead2 title-small">
+            创设于学院成立之初、积淀丰富、历史悠久
+          </p>
+          <div class="border"></div>
+        </div>
+        <div id="rline"></div>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+    <div class="teams">
+      <div class="slide-outer">
+        <ul class="slides">
+          <input type="radio" name="radio-btn" id="img-1" checked />
+          <li class="slide-container">
+            <div class="slide">
+              <img src="../static/image/slides4.jpg" />
+            </div>
+            <div class="nav">
+              <label for="img-6" class="prev">&#x2039;</label>
+              <label for="img-2" class="next">&#x203a;</label>
+            </div>
+          </li>
+
+          <input type="radio" name="radio-btn" id="img-2" />
+          <li class="slide-container">
+            <div class="slide">
+              <img src="../static/image/slides1.jpg" />
+            </div>
+            <div class="nav">
+              <label for="img-1" class="prev">&#x2039;</label>
+              <label for="img-3" class="next">&#x203a;</label>
+            </div>
+          </li>
+
+          <input type="radio" name="radio-btn" id="img-3" />
+          <li class="slide-container">
+            <div class="slide">
+              <img src="../static/image/slides2.jpg" />
+            </div>
+            <div class="nav">
+              <label for="img-2" class="prev">&#x2039;</label>
+              <label for="img-4" class="next">&#x203a;</label>
+            </div>
+          </li>
+
+          <input type="radio" name="radio-btn" id="img-4" />
+          <li class="slide-container">
+            <div class="slide">
+              <img src="../static/image/slides3.jpg" />
+            </div>
+            <div class="nav">
+              <label for="img-3" class="prev">&#x2039;</label>
+              <label for="img-5" class="next">&#x203a;</label>
+            </div>
+          </li>
+
+          <input type="radio" name="radio-btn" id="img-5" />
+          <li class="slide-container">
+            <div class="slide">
+              <img src="http://farm9.staticflickr.com/8055/8098750623_66292a35c0_z.jpg" />
+            </div>
+            <div class="nav">
+              <label for="img-4" class="prev">&#x2039;</label>
+              <label for="img-6" class="next">&#x203a;</label>
+            </div>
+          </li>
+
+          <input type="radio" name="radio-btn" id="img-6" />
+          <li class="slide-container">
+            <div class="slide">
+              <img src="http://farm9.staticflickr.com/8061/8237246833_54d8fa37f0_z.jpg" />
+            </div>
+            <div class="nav">
+              <label for="img-5" class="prev">&#x2039;</label>
+              <label for="img-1" class="next">&#x203a;</label>
+            </div>
+          </li>
+
+          <li class="nav-dots">
+            <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+            <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+            <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+            <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+            <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+            <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+          </li>
+        </ul>
+      </div>
+      <div class="about-text" title="立即报名">
+        <a class="team-header">
+          计算机工程研发中心
+        </a>
+        <p class="team-info">
+          研发中心创设于学院成立之初，积淀丰富、历史悠久，是计院最为老牌的一个团队。2001年，研发中心成立，至今已经15年历史，这么多年来，团队成员一直致力于互联网、安卓手机应用、数据库以及图形图像等技术的学习和开发。团队已有大批师兄师姐进入了百度、腾讯、华为、网易、阿里巴巴、金山等公司进行工作。
+        </p>
+        <p class="team-info">
+          如果你有出色的学习能力、对知识有近乎渴望的追求，以及良好的抗压力和团队协作力，那就加入我们吧！在这里和你的队友们一起打造属于你们的BAT之路！
+        </p>
+      </div>
+      <div class="clrfix"></div>
+    </div>
+  </div>
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="foot-container">
+      <div class="row">
+        <div class="row-left">
+          <h6>Contact</h6>
+          <i class="foot_icon fa fa-envelope-o"></i><span class="foot_head"> Email: </span><span
+            class="foot_text">ResearchDeveCenter@Gmail.com</span></br>
+          <i class="foot_icon fa fa-home"></i><span class="foot_head"> Address: </span><span
+            class="foot_text">广州市番禺区大学城广东工业大学</span></br>
+          <i class="foot_icon fa fa-wrench"></i><span class="foot_head"> Work: UI Designer </span><span
+            class="foot_text">
+            @ Bingo</span></br>
+          <span class="foot_head1">Front-end:</span><span class="foot_text"> @17研发前端</span></br>
+          <span class="foot_head1">Backstage:</span><span class="foot_text"> @17研发后台</span>
+        </div>
+        <div class="row-middle">
+          <h6>Categories Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href=".sec05"><i class="fa fa-chrome"></i> web前端</a></li>
+            <li><a href=".sec06"><i class="fa fa-cog"></i> java后台</a></li>
+            <li><a href=".sec07"><i class="fa fa-android"></i> Android移动</a></li>
+            <li><a href=".sec08"><i class="fa fa-database"></i> 大数据</a></li>
+          </ul>
+        </div>
+        <div class="row-middle">
+          <h6>More</h6>
+          <p>了解更多，欢迎扫描如下二维码至2019招新Q群</p>
+          <div class="qqchats"><img src="../static/image/QQchats.jpg" alt="招新q群" title="欢迎加入"></div>
+        </div>
+        <div class="clrfix"></div>
+      </div>
+      <hr>
+    </div>
+    <div class="foot-container">
+      <div class="row">
+        <div class="">
+          <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by
+            <a href="#">RDC</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+  <script src="../static/js/gt.js"></script>
+  <script type="text/javascript" language="javascript" src="../static/js/nav.js"></script>
+
 </body>
+
 </html>
