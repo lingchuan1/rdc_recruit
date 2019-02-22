@@ -136,10 +136,17 @@ $(document).ready(function () {
     $('#team-choice').text("——" + team + "组");
   }
 
+  var throttle = function(method,context){
+    clearTimeout(method.tId);
+    method.tId = setTimeout(function(){
+      method.call(context);
+    },500);
+  }
+
   var address = 'http://47.106.131.6/user';
+
   var handler2 = function (captchaObj) {
-    $("#submit2").click(function (e) {
-      e.preventDefault();
+    var submitMethod = function () {
       var result = captchaObj.getValidate();
       if (!result) {
         $('#sendmessage').text('请先完成验证');
@@ -206,6 +213,10 @@ $(document).ready(function () {
           }, 2000);
         }
       }
+    };
+    $("#submit2").click(function(e){
+      e.preventDefault();
+      throttle(submitMethod,this);
     });
     // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
     captchaObj.appendTo("#captcha2");
@@ -214,6 +225,7 @@ $(document).ready(function () {
     });
     // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
   };
+
   $.ajax({
     url: 'http://47.106.131.6/user/init', // 加随机数防止缓存
     type: "get",
