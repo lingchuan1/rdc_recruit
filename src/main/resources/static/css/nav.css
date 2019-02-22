@@ -8,6 +8,7 @@
 
 body {
     overflow-x: hidden;
+    min-width: 1002px;
 }
 #header{
     position: fixed;top: 0;
@@ -72,7 +73,7 @@ body {
 }
 @media only screen and (max-width: 766px) {
     .logo {
-        float: none;
+        /* float: none; */
     }
 }
 
