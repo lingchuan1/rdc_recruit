@@ -169,9 +169,9 @@ $(document).ready(function () {
             url: address + '/validateAndAdd',
             type: 'POST',
             dataType: 'json',
-            xhrFields: {
-              withCredentials: true
-            },
+            // xhrFields: {
+            //   withCredentials: true
+            // },
             data: {
               sessionId: sessionId,
               name: name,
