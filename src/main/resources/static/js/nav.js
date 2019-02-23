@@ -145,7 +145,7 @@ $(document).ready(function () {
     }, 500);
   }
 
-  var address = 'http://47.106.131.6/user';
+  var address = 'http://rdc2019.cn/user';
   var sessionId = '';
 
   var handler2 = function (captchaObj) {
@@ -243,7 +243,7 @@ $(document).ready(function () {
   };
 
   $.ajax({
-    url: 'http://47.106.131.6/user/init', // 加随机数防止缓存
+    url: address+'/init', // 加随机数防止缓存
     type: "get",
     dataType: "json",
     success: function (data) {
