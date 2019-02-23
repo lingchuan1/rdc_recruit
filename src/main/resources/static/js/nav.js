@@ -203,7 +203,7 @@ $(document).ready(function () {
                 $('input:radio[name="mb"]').attr("checked", false);
                 // $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
               } else if (data.result == 'error') {
-                $(".lose .dec_txt").text("报名失败！");
+                $(".lose .dec_txt").text(data.message);
                 failRender();
                 $('#sendmessage').text(data.message);
                 $("#sendmessage").show();
