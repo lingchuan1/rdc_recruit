@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   FastClick.attach(document.body);
 });//300ms延迟
 
@@ -133,14 +133,16 @@ $(document).ready(function () {
         $('.form-countainer h1').eq(0).css({ "background-color": "#804bbb" });
         break;
     }
-    $('#team-choice').text("——" + team + "组");
+    if (team) {
+      $('#team-choice').text("——" + team + "组");
+    }
   }
 
-  var throttle = function(method,context){
+  var throttle = function (method, context) {
     clearTimeout(method.tId);
-    method.tId = setTimeout(function(){
+    method.tId = setTimeout(function () {
       method.call(context);
-    },500);
+    }, 500);
   }
 
   var address = 'http://47.106.131.6/user';
@@ -188,13 +190,24 @@ $(document).ready(function () {
             success: function (data) {
               console.log(data)
               if (data.result == 'success') {
+                $(".success .dec_txt").text("报名成功！");
+                successRender();
                 $('#sendmessage').text('报名成功！');
                 $("#sendmessage").show();
-                $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
+                $('#name').val('');
+                $('#contact').val('');
+                $('#professionClass').val('');
+                $('#studentId').val('');
+                $('#introduction').val('');
+                $('input:radio[name="rb"]').attr("checked", false);
+                $('input:radio[name="mb"]').attr("checked", false);
+                // $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
               } else if (data.result == 'error') {
+                $(".lose .dec_txt").text("报名失败！");
+                failRender();
                 $('#sendmessage').text(data.message);
                 $("#sendmessage").show();
-                $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
+                // $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
                 setTimeout(function () {
                   $("#sendmessage").hide();
                 }, 2000);
@@ -202,7 +215,8 @@ $(document).ready(function () {
             },
             error: function (err) {
               // 请求出错处理
-              console.log(err);
+              $(".warning .dec_txt").text("服务器错误");
+              errorRender();
             }
           })
         }
@@ -216,9 +230,9 @@ $(document).ready(function () {
         }
       }
     };
-    $("#submit2").click(function(e){
+    $("#submit2").click(function (e) {
       e.preventDefault();
-      throttle(submitMethod,this);
+      throttle(submitMethod, this);
     });
     // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
     captchaObj.appendTo("#captcha2");
@@ -233,7 +247,7 @@ $(document).ready(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      if(data.sessionId){
+      if (data.sessionId) {
         sessionId = data.sessionId
       }
       // 调用 initGeetest 初始化参数
@@ -250,4 +264,56 @@ $(document).ready(function () {
       }, handler2);
     }
   });
+
+  //自定义弹出提示框
+  //点击ok按钮
+  $(".okoButton").click(function () {
+    $(".tips").addClass("none");
+    $(".okoButton").removeClass("redOkoButton");
+  })
+  //成功效果显示
+  successRender = function () {
+    $(".box_overlay,.okoButton").removeClass("none");
+    $("#animationTipBox").removeClass("none");
+    $(".success").removeClass("none");
+    $("#animationTipBox").mousedown();
+  }
+  //失败效果显示
+  failRender = function () {
+    $(".box_overlay,.okoButton").removeClass("none");
+    $("#animationTipBox").removeClass("none");
+    $(".lose").removeClass("none");
+    $(".okoButton").addClass("redOkoButton");
+  }
+  //提示效果显示
+  errorRender = function () {
+    $(".box_overlay,.okoButton").removeClass("none");
+    $("#animationTipBox").removeClass("none");
+    $(".warning").removeClass("none");
+  }
+  //loading效果显示
+  loadRender = function () {
+    $(".box_overlay").removeClass("none");
+    $("#animationTipBox").removeClass("none");
+    $(".load").removeClass("none");
+  }
+  //登录loading结束
+  finishLoadingRender1 = function () {
+    $(".box_overlay,#animationTipBox,.load").addClass("none");
+  }
+  //loading失败显示
+  finishLoadingRender2 = function () {
+    $(".box_overlay,#animationTipBox,.load").addClass("none");
+    failRender();
+  }
+  //loading成功显示
+  finishLoadingRender3 = function () {
+    $(".box_overlay,#animationTipBox,.load").addClass("none");
+    successRender();
+  }
+  //loading错误显示
+  finishLoadingRender4 = function () {
+    $(".box_overlay,#animationTipBox,.load").addClass("none");
+    errorRender();
+  }
 })

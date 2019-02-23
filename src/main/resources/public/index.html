@@ -10,6 +10,7 @@
   <link rel='stylesheet' type='text/css' href="css/img-hover.css">
   <link rel='stylesheet' type='text/css' href="css/slides.css">
   <link rel="stylesheet" type="text/css" href="css/navigation-bar.css">
+  <link rel="stylesheet" type="text/css" href="css/changealert.css">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" language="javascript" src="js/jquery-1.10.2.min.js"></script>
   <script type='application/javascript' src='js/fastclick.js'></script>
@@ -466,6 +467,54 @@
       </div>
     </div>
   </footer>
+    <!--自定义提示弹出框-->
+    <div class="box_overlay tips none"></div>
+    <div id="animationTipBox" class=" tips none">
+      <div class="success tips none">
+        <div class="icon">
+          <div class="line_short"></div>
+          <div class="line_long"></div>
+        </div>
+        <div class="dec_txt">修改成功</div>
+      </div>
+      <div class="lose tips none">
+        <div class="icon">
+          <div class="icon_box">
+            <div class="line_left"></div>
+            <div class="line_right"></div>
+          </div>
+        </div>
+        <div class="dec_txt"></div>
+      </div>
+      <div class="warning tips none">
+        <div class="icon">i</div>
+        <div class="dec_txt">服务器错误</div>
+      </div>
+      <div class="load none">
+        <div class="icon_box">
+          <div class="cirBox1">
+            <div class="cir1"></div>
+            <div class="cir2"></div>
+            <div class="cir3"></div>
+            <div class="cir4"></div>
+          </div>
+          <div class="cirBox2">
+            <div class="cir1"></div>
+            <div class="cir2"></div>
+            <div class="cir3"></div>
+            <div class="cir4"></div>
+          </div>
+          <div class="cirBox3">
+            <div class="cir1"></div>
+            <div class="cir2"></div>
+            <div class="cir3"></div>
+            <div class="cir4"></div>
+          </div>
+        </div>
+        <div class="dec_txt">Loading..</div>
+      </div>
+      <button class="okoButton tips none">ok</button>
+    </div>
   <script src="js/gt.js"></script>
   <script type="text/javascript" language="javascript" src="js/nav.js"></script>
 
