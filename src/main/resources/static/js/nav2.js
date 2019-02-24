@@ -200,13 +200,16 @@ $(function () {
                 seccode: result.geetest_seccode
               },
               beforeSend: function() {
-                a.init();
+                b.loadRender();
+              },
+              complete: function() {
+                captchaObj.reset();
               },
               success: function (data) {
                 console.log(data)
                 if (data.result == 'success') {
                   $(".success .dec_txt").text("报名成功！");
-                  b.successRender();
+                  b.finishLoadingRender3();
                   $('#sendmessage').css('background-color', '#EBF6E0');
                   $('#sendmessage').css('border', '1px solid #B3DC82');
                   $('#sendmessage').css('color', '#5F9025');
@@ -225,7 +228,7 @@ $(function () {
                   // $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
                 } else if (data.result == 'error') {
                   $(".lose .dec_txt").text(data.message);
-                  b.failRender();
+                  b.finishLoadingRender2();
                   $('#sendmessage').css('background-color', 'rgb(246, 224, 226)');
                   $('#sendmessage').css('border', '1px solid #fc4c4c');
                   $('#sendmessage').css('color', '#fc4c4c');
@@ -240,7 +243,7 @@ $(function () {
               error: function (err) {
                 // 请求出错处理
                 $(".warning .dec_txt").text("服务器错误");
-                b.errorRender();
+                b.finishLoadingRender4();
               }
             })
           }
@@ -316,27 +319,27 @@ $(function () {
       $("#animationTipBox").removeClass("none");
       $(".warning").removeClass("none");
     },
-    // //loading效果显示
-    // loadRender: function () {
-    //   $(".box_overlay").removeClass("none");
-    //   $("#animationTipBox").removeClass("none");
-    //   $(".load").removeClass("none");
-    // },
-    // //loading失败显示
-    // finishLoadingRender2: function () {
-    //   $(".box_overlay,#animationTipBox,.load").addClass("none");
-    //   failRender();
-    // },
-    // //loading成功显示
-    // finishLoadingRender3: function () {
-    //   $(".box_overlay,#animationTipBox,.load").addClass("none");
-    //   successRender();
-    // },
-    // //loading错误显示
-    // finishLoadingRender4: function () {
-    //   $(".box_overlay,#animationTipBox,.load").addClass("none");
-    //   errorRender();
-    // },
+    //loading效果显示
+    loadRender: function () {
+      $(".box_overlay").removeClass("none");
+      $("#animationTipBox").removeClass("none");
+      $(".load").removeClass("none");
+    },
+    //loading失败显示
+    finishLoadingRender2: function () {
+      $(".box_overlay,#animationTipBox,.load").addClass("none");
+      this.failRender();
+    },
+    //loading成功显示
+    finishLoadingRender3: function () {
+      $(".box_overlay,#animationTipBox,.load").addClass("none");
+      this.successRender();
+    },
+    //loading错误显示
+    finishLoadingRender4: function () {
+      $(".box_overlay,#animationTipBox,.load").addClass("none");
+      this.errorRender();
+    },
   }
 
   a.findDimensions();
