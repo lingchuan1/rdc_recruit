@@ -27,10 +27,29 @@ $(document).ready(function () {
     // var detail = document.getElementById("detail");
     // detail.style.width = winWidth-4;
     $('.banner').css('min-height', winHeight);
+    var ua = navigator.userAgent;
+    if (/Android (\d+\.\d+)/.test(ua)) {
+      $('.banner').css('min-height', winHeight * 1.5);
+    }
   }
   findDimensions();
   //调用函数，获取数值
   window.onresize = findDimensions;
+
+  // var phoneWidth = parseInt(window.screen.width);
+  // var phoneScale = phoneWidth / 640;
+  // var ua = navigator.userAgent;
+  // if (/Android (\d+\.\d+)/.test(ua)) {
+  // var version = parseFloat(RegExp.$1);
+  // if (version > 2.3) {
+  // $('head').append('<meta name="viewport" content="width=device-width, initial-scale=0.3,target-densitydpi=device-dpi">');
+  // } else {
+  //   $('head').append('<meta name="viewport" content="width=device-width, initial-scale=0.3,target-densitydpi=device-dpi">');
+  // }
+  // } 
+  // else {
+  //   $('head').append('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+  // }
 
   // h-nav滚动弹出
   $(window).scroll(function () {
@@ -243,7 +262,7 @@ $(document).ready(function () {
   };
 
   $.ajax({
-    url: address+'/init', // 加随机数防止缓存
+    url: address + '/init', // 加随机数防止缓存
     type: "get",
     dataType: "json",
     success: function (data) {

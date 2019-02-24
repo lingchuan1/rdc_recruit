@@ -3,11 +3,11 @@ figure.snip1091 {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
   display: inline-block;
-  margin: 10% 5%;
+  /* margin: 10% 5%; */
   min-width: 220px;
   max-width: 310px;
   max-height: 310px;
-  width: 40%;
+  /* width: 40%; */
   overflow: hidden;
   text-align: center;
   background: #000000;
