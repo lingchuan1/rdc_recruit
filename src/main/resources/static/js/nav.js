@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  FastClick.attach(document.body);
+  // FastClick.attach(document.body);
 
   // 封面壁纸尺寸调整
   var winHeight = 0;
