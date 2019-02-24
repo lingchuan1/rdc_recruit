@@ -165,7 +165,7 @@ $(document).ready(function () {
   }
 
   var address = 'http://rdc2019.cn/user';
-  var sessionId = '';
+  // var sessionId = '';
 
   var handler2 = function (captchaObj) {
     var submitMethod = function () {
@@ -194,7 +194,7 @@ $(document).ready(function () {
             //   withCredentials: true
             // },
             data: {
-              sessionId: sessionId,
+              // sessionId: sessionId,
               name: name,
               contact: contact,
               professionClass: professionClass,
@@ -266,9 +266,9 @@ $(document).ready(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      if (data.sessionId) {
-        sessionId = data.sessionId
-      }
+      // if (data.sessionId) {
+      //   sessionId = data.sessionId
+      // }
       // 调用 initGeetest 初始化参数
       // 参数1：配置参数
       // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
