@@ -6,6 +6,7 @@ $(document).ready(function () {
   // 封面壁纸尺寸调整
   var winHeight = 0;
   var winWidth = 0;
+  var ua = navigator.userAgent;
   function findDimensions() //函数：获取尺寸
   {
     //获取窗口宽度
@@ -27,14 +28,15 @@ $(document).ready(function () {
     // var detail = document.getElementById("detail");
     // detail.style.width = winWidth-4;
     $('.banner').css('min-height', winHeight);
-    var ua = navigator.userAgent;
     if (/Android (\d+\.\d+)/.test(ua)) {
       $('.banner').css('min-height', winHeight * 1.5);
     }
   }
   findDimensions();
   //调用函数，获取数值
-  window.onresize = findDimensions;
+  if (!(/Android (\d+\.\d+)/.test(ua))) {
+    window.onresize = findDimensions;
+  }
 
   // var phoneWidth = parseInt(window.screen.width);
   // var phoneScale = phoneWidth / 640;
