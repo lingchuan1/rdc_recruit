@@ -161,12 +161,15 @@ $(function () {
       var submitMethod = function () {
         var result = captchaObj.getValidate();
         if (!result) {
+          $('#sendmessage').css('background-color', 'rgb(246, 224, 226)');
+          $('#sendmessage').css('border', '1px solid #fc4c4c');
+          $('#sendmessage').css('color', '#fc4c4c');
           $('#sendmessage').text('请先完成验证');
           $("#sendmessage").show();
           $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
           setTimeout(function () {
             $("#sendmessage").hide();
-          }, 2000);
+          }, 4000);
         } else {
           var name = $('#name').val();
           var contact = $('#contact').val();
@@ -204,6 +207,9 @@ $(function () {
                 if (data.result == 'success') {
                   $(".success .dec_txt").text("报名成功！");
                   b.successRender();
+                  $('#sendmessage').css('background-color', '#EBF6E0');
+                  $('#sendmessage').css('border', '1px solid #B3DC82');
+                  $('#sendmessage').css('color', '#5F9025');
                   $('#sendmessage').text('报名成功！');
                   $("#sendmessage").show();
                   $('#name').val('');
@@ -215,11 +221,14 @@ $(function () {
                   $('input:radio[name="mb"]').attr("checked", false);
                   setTimeout(function () {
                     $("#sendmessage").hide();
-                  }, 6000);
+                  }, 8000);
                   // $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
                 } else if (data.result == 'error') {
                   $(".lose .dec_txt").text(data.message);
                   b.failRender();
+                  $('#sendmessage').css('background-color', 'rgb(246, 224, 226)');
+                  $('#sendmessage').css('border', '1px solid #fc4c4c');
+                  $('#sendmessage').css('color', '#fc4c4c');
                   $('#sendmessage').text(data.message);
                   $("#sendmessage").show();
                   // $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
@@ -236,6 +245,9 @@ $(function () {
             })
           }
           else {
+            $('#sendmessage').css('background-color', 'rgb(246, 224, 226)');
+            $('#sendmessage').css('border', '1px solid #fc4c4c');
+            $('#sendmessage').css('color', '#fc4c4c');
             $('#sendmessage').text('请输入必填信息');
             $("#sendmessage").show();
             $('html, body').animate({ scrollTop: $("#sendmessage").offset().top - 100 }, 500);
