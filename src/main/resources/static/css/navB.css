@@ -1,9 +1,7 @@
-/* colores*/
-
 * {
     margin: 0;
     padding: 0;
-    /* position: relative; */
+    box-sizing: border-box;
 }
 
 html {
@@ -16,8 +14,32 @@ html {
 body {
     overflow-x: hidden;
     /* min-width: 768px; */
+    color: #8f8f8f;
+    background: white;
+    font-family: "Cardo", serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
 }
 
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 30px;
+    line-height: 1.8;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 2;
+}
+.direInfo{
+    text-indent: .5rem;
+}
 #header {
     position: fixed;
     top: 0;
@@ -169,34 +191,6 @@ body {
     padding: 0 2%;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-body {
-    color: #8f8f8f;
-    background: white;
-    font-family: "Cardo", serif;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-}
-
-a {
-    text-decoration: none;
-}
-
-h1 {
-    font-size: 30px;
-    line-height: 1.8;
-    text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
-}
-
-p {
-    margin-bottom: 20px;
-    font-size: 17px;
-    line-height: 2;
-}
 
 .content {
     padding: 50px 2% 150px;
@@ -315,7 +309,7 @@ p {
 /*                             主部分的统一标题形式                            */
 
 .subtitle {
-    padding: 40px 5px 40px 5px;
+    padding: 3rem 0.3rem 1rem 0.3rem;
     line-height: 1.875em;
     text-align: center;
     width: 100%;
@@ -345,67 +339,21 @@ p {
 .subtitle .lead2 {
     color: #bbbbbb;
     position: relative;
-    /* font-size: 0.85em;
-    font-weight: bold; */
     overflow: hidden;
     font-family: 华文新魏, 微软雅黑, curwive, sans-serif;
 }
 
-/*实现英文左边的线条*/
-
-#lline {
-    float: left;
-    border-bottom: 1px solid #bbbbbb;
-    width: 35%;
-    padding-top: 12px;
-}
-
-/*实现英文右边的线条*/
-
-#rline {
-    float: right;
-    border-bottom: 1px solid #bbbbbb;
-    width: 35%;
-    padding-top: 12px;
-}
-
-/*用伪类实现文字两边的·*/
-
-.lead2:after, .lead2:before {
-    background: #bbbbbb;
-    display: block;
-    content: "";
-    border: 2px solid;
-    border-radius: 50%;
-    height: 1px;
-    position: absolute;
-    top: 10px;
-    width: 1px;
-}
-
-.lead2:before {
-    left: 0;
-}
-
-.lead2:after {
-    right: 0;
-}
 
 .direList {
     margin: 10px 30px 30px 30px;
 }
 
 .direElement {
-    float: left;
     text-align: center;
-    width: 40%;
-    /* min-width: 240px; */
-    margin-right: 5%;
-    margin-left: 5%;
-    padding: 50px 4%;
+    width: 100%;
+    padding: 2.8rem 2.2rem;
     cursor: pointer;
     border-radius: 3px;
-    height: 380px;
     overflow: hidden;
 }
 
@@ -414,7 +362,7 @@ p {
 }
 
 .direHeader {
-    font-size: 16px;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #303030;
     margin: 10px 0;
@@ -434,18 +382,8 @@ p {
 }
 
 /* teams-introduce */
-
-.figure-container {
-    padding: 13% 5%;
-    display: inline-block;
-    width: 40%;
-    overflow: hidden;
-}
-
 .team-text {
-    display: inline-block;
-    float: right;
-    width: 58%;
+    width: 100%;
 }
 
 .team-header {
@@ -462,10 +400,11 @@ p {
     line-height: 2.3em;
     color: #565656;
     margin-bottom: 5px;
+    text-indent: 1.8rem;
 }
 
 .team-itrd {
-    margin: 30px
+    margin: 1rem;
 }
 
 /* 关于研发 */
@@ -644,7 +583,6 @@ p {
     font-weight: 500;
     line-height: 2;
     color: rgb(88, 88, 88);
-    ;
 }
 
 .form-countainer h1 {

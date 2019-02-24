@@ -27,7 +27,7 @@ $(document).ready(function () {
     // detail.style.width = winWidth-4;
     $('.banner').css('min-height', winHeight);
     if (/Android (\d+\.\d+)/.test(ua)) {
-      $('.banner').css('min-height', winHeight * 1.5);
+      // $('.banner').css('min-height', winHeight * 1.5);
     }
   }
   findDimensions();
