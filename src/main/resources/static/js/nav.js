@@ -1,8 +1,6 @@
-$(function () {
-  FastClick.attach(document.body);
-});//300ms延迟
-
 $(document).ready(function () {
+  FastClick.attach(document.body);
+
   // 封面壁纸尺寸调整
   var winHeight = 0;
   var winWidth = 0;
