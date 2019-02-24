@@ -116,7 +116,7 @@ $(function () {
       var that = this;
       //输入框验证
       $('#name').blur(function () { that.validate(this, '^[\u4E00-\u9FA5]{2,4}$') });
-      $('#studentId').blur(function () { that.validate(this, '^[1-9][0-9]{7,12}$') });
+      $('#studentId').blur(function () { that.validate(this, '^[3][1,2][1][7-8][0-9]{6}$') });
       $('#contact').blur(function () { that.validate(this, '^[1][0-9]{10}$') });
       $('input:radio[name="rb"]').click(function () { that.changeTeam(); });
       //报名成功后点击oj按钮
