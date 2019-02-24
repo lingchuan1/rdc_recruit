@@ -6,13 +6,16 @@
     /* position: relative; */
 }
 
-html{
+html {
     font-size: 18px;
+    line-height: 1.15;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     overflow-x: hidden;
-    min-width: 1002px;
+    /* min-width: 768px; */
 }
 
 #header {
@@ -25,7 +28,7 @@ body {
     z-index: 99;
 }
 
-.h_container{
+.h_container {
     margin-top: -30px;
 }
 
@@ -34,21 +37,14 @@ body {
     max-height: 80px;
     z-index: 999;
     width: 100%;
-    padding-top: 30px;
+    padding-top: .8rem;
     background: none;
     overflow: hidden;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
     opacity: 0;
     top: -100px;
-    padding-bottom: 6px;
     font-family: "Montserrat", sans-serif;
-}
-
-@media only screen and (max-width: 766px) {
-    .main_h {
-        padding-top: 25px;
-    }
 }
 
 .open-nav {
@@ -69,12 +65,13 @@ body {
 
 .logo {
     /* width: 50px; */
-    font-size: 28px;
+    font-size: 1.6rem;
     color: #36b6a1;
     text-transform: uppercase;
     float: left;
     display: block;
-    margin-top: -5px;
+    margin-top: .4rem;
+    margin-left: 2rem;
     line-height: 1;
     margin-bottom: 10px;
 }
@@ -84,60 +81,34 @@ body {
     height: 35px;
 }
 
-@media only screen and (max-width: 766px) {
-    .logo {
-        /* float: none; */
-    }
-}
-
 .h-nav {
     float: right;
-    width: 60%;
+    width: 100%;
     position: relative;
 }
 
-@media only screen and (max-width: 766px) {
-    .h-nav {
-        width: 100%;
-    }
-}
-
 .h-nav ul {
-    list-style: none;
-    overflow: hidden;
+    padding-top: .55rem;
+    float: left;
     text-align: center;
-    float: right;
-}
-
-@media only screen and (max-width: 766px) {
-    .h-nav ul {
-        padding-top: 10px;
-        margin-bottom: 22px;
-        float: left;
-        text-align: center;
-        width: 100%;
-    }
+    width: 100%;
 }
 
 .h-nav ul li {
-    display: inline-block;
-    margin-right: 45px;
-    line-height: 1.5;
+    width: 100%;
+    padding: 0.8rem 0;
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+    list-style-type: none;
 }
 
-@media only screen and (max-width: 766px) {
-    .h-nav ul li {
-        width: 100%;
-        padding: 0.8rem 0;
-        margin: 0;
-    }
-}
 
 .h-nav ul a {
     color: #888888;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.2rem;
     position: relative;
+    line-height: 2rem;
 }
 
 .h-nav ul li a:hover .b_fa {
@@ -157,12 +128,12 @@ body {
 }
 
 .b_fa {
-    font-size: 1.3em!important;
-    padding-right: 5px;
+    font-size: 1.33em!important;
+    padding-right: .6rem;
 }
 
 .mobile-toggle {
-    display: none;
+    display: block;
     cursor: pointer;
     font-size: 20px;
     position: absolute;
@@ -172,18 +143,19 @@ body {
     -webkit-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
     transition: all 200ms ease-in;
+    border: 1px solid transparent;
+    border-color: #ddd;
+    background-color: hsla(0,0%,71%,.1)!important;
+    border-radius: 4px;
+    width: 3rem;
+    padding:0.6rem 0.5rem;
 }
 
-@media only screen and (max-width: 766px) {
-    .mobile-toggle {
-        display: block;
-    }
-}
 
 .mobile-toggle span {
-    width: 30px;
-    height: 4px;
-    margin-bottom: 6px;
+    width: 2rem;
+    height: .2rem;
+    margin:0.25rem 0;
     border-radius: 1000px;
     background: #8f8f8f;
     display: block;
@@ -781,7 +753,6 @@ i {
     padding: 13px 40px 13px 18px;
     border-radius: 3px;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.03);
-
     color: #fc4c4c;
     border: 1px solid #fc4c4c;
     background-color: rgb(246, 224, 226);
@@ -873,4 +844,3 @@ input[type="checkbox"]:checked+label::before, input[type="radio"]:checked+label:
     color: #666;
     margin: 0;
 }
-
