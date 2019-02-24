@@ -1,5 +1,6 @@
 package com.rdc.recruit;
 
+import com.rdc.recruit.util.StringUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,6 @@ public class RecruitApplicationTests {
     @Test
     public void test() throws IOException {
 
-        redisTemplate.opsForValue().increment("c");
-        //System.out.println(stringRedisTemplate.opsForValue().get("a"));
     }
 }
 

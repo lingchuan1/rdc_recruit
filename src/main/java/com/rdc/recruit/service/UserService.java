@@ -16,7 +16,8 @@ public class UserService {
         if(StringUtil.isEmpty(user.getName())||StringUtil.isEmpty(user.getStudentId())||StringUtil.isEmpty(user.getContact())||
                 StringUtil.isEmpty(user.getProfessionClass())||StringUtil.isEmpty(user.getDirection()))
             return "不能为空";
-        if(user.getName().length() > 10)
+        StringUtil.StringFilter(user.getProfessionClass());
+        if(user.getName().length() > 15)
             return "名字太长";
         if(user.getProfessionClass().length() > 25)
             return "专业班级太长";
@@ -28,6 +29,8 @@ public class UserService {
             return "学号错误";
         if(!StringUtil.isLegalPhone(user.getContact()))
             return "手机号错误";
+        if(!StringUtil.isLegalName(user.getName()))
+            return "姓名错误";
         if(1!=userMapper.add(user))
             return "报名失败";
         else
