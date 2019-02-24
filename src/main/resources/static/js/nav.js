@@ -122,7 +122,7 @@ $(document).ready(function () {
 
   // 报名系统
   //输入框验证
-  $('#name').blur(function () { validate(this, '^[\u4E00-\u9FA5]{2,4}$') });
+  $('#name').blur(function () { validate(this, '^[\u4E00-\u9FA5]{2,12}$') });
   $('#studentId').blur(function () { validate(this, '^[1-9][0-9]{7,12}$') });
   $('#contact').blur(function () { validate(this, '^[1][0-9]{10}$') });
   //验证格式
