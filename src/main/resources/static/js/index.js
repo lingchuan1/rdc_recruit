@@ -37,6 +37,14 @@ $(function () {
     //页面效果
     fn: function () {
       var that = this;
+      // 开头淡出淡入效果
+      if ($('.subtitle').hasClass('F-fade-in')) {
+        $('.subtitle').addClass('hold');
+        $('.subtitle').removeClass('F-fade-in');
+      } if ($('.direElement').hasClass('B-fade-in')) {
+        $('.direElement').addClass('hold');
+        $('.direElement').removeClass('B-fade-in');
+      }
       // h-nav滚动弹出
       $(window).scroll(function () {
 
@@ -130,13 +138,13 @@ $(function () {
     changeTeam: function () {
       var team = $('input:radio[name="rb"]:checked').val();
       switch (team) {
-        case '前端':
+        case 'Web前端':
           $('.form-countainer h1').eq(0).css({ "background-color": "#21a675" });
           break;
-        case '后台':
+        case 'java后台':
           $('.form-countainer h1').eq(0).css({ "background-color": "#177cb0" });
           break;
-        case '安卓':
+        case 'Android':
           $('.form-countainer h1').eq(0).css({ "background-color": "#ff9090" });
           break;
         case '大数据':
@@ -350,6 +358,8 @@ $(function () {
     var kk = $('.slides').width();
     $('.slides,.slide').css('height', kk * 0.82);
   }
+
+
   a.fn();
   a.fn2();
   a.init();
