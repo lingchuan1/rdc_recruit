@@ -27,18 +27,15 @@
         <span></span>
       </div>
       <div class="h-nav">
-        <ul>
-          <li><a href=".sec01"><i class="fa b_fa fa-home fa-2x" aria-hidden="true"></i>首页</a>
-            <div class="list_underline"></div>
-          </li>
-          <li><a href=".sec02"><i class="fa b_fa fa-group fa-2x" aria-hidden="true"></i>项目组</a></li>
+        <ul>            
+          <li><a href=".sec02"><i class="fa b_fa fa-group fa-2x" aria-hidden="true"></i>项目组</a><div class="list_underline"></div></li>
           <li><a href=".sec03"><i class="fa b_fa fa-sign-in fa-2x" aria-hidden="true"></i>招新报名</a></li>
           <li><a href=".sec04"><i class="fa b_fa fa-info-circle fa-2x" aria-hidden="true"></i>关于研发</a></li>
         </ul>
       </div>
     </div> <!-- / row -->
   </header>
-
+<!-- 
   <div class="banner">
     <div class="h_container">
       <h1 class="sec01"><span>RDC 研发中心</span>（2019）<br> </h1>
@@ -47,7 +44,7 @@
         <span></span>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="row content">
     <!--项目组介绍标题-->
@@ -175,7 +172,7 @@
         <h1>2019研发中心招新报名表 <span id="team-choice"></span></h1>
         <div class="contentform">
           <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
-          <div class="leftcontact">
+          <div class="form-contact">
 
             <div class="form-group">
               <p>姓名 <span>*</span></p>
@@ -212,40 +209,6 @@
                 <label for="rb4">大数据</label>
               </div>
             </div>
-            <!-- <div class="form-group">
-              <p>E-mail <span>*</span></p>
-              <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
-              <input type="email" name="email" id="email" data-rule="email"
-                data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire." />
-              <div class="validation"></div>
-            </div>
-
-            <div class="form-group">
-              <p>Company <span>*</span></p>
-              <span class="icon-case"><i class="fa fa-home"></i></span>
-              <input type="text" name="society" id="society" data-rule="required"
-                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné." />
-              <div class="validation"></div>
-            </div> -->
-            <!-- 
-            <div class="form-group">
-              <p>Postcode <span>*</span></p>
-              <span class="icon-case"><i class="fa fa-map-marker"></i></span>
-              <input type="text" name="postal" id="postal" data-rule="required"
-                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Code postal' doit être renseigné." />
-              <div class="validation"></div>
-            </div> -->
-
-          </div>
-          <div class="rightcontact">
-
-            <!-- <div class="form-group">
-              <p>city<span>*</span></p>
-              <span class="icon-case"><i class="fa fa-building-o"></i></span>
-              <input type="text" name="ville" id="ville" data-rule="required"
-                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné." />
-              <div class="validation"></div>
-            </div> -->
 
             <div class="form-group">
               <p>专业班级<span>*</span></p>
@@ -260,14 +223,6 @@
               <input type="text" name="contact" id="contact" data-rule="/[^\d-+]/g" maxlength="11" />
               <div class="validation">输入格式错误</div>
             </div>
-
-            <!-- <div class="form-group">
-              <p>Subject <span>*</span></p>
-              <span class="icon-case"><i class="fa fa-comment-o"></i></span>
-              <input type="text" name="sujet" id="sujet" data-rule="required"
-                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Sujet' doit être renseigné." />
-              <div class="validation"></div>
-            </div> -->
 
             <div class="form-group">
               <p>自我介绍<span>*</span></p>
@@ -298,6 +253,18 @@
       </div>
     </div>
     <div class="teams">
+
+      <div class="about-text" title="立即报名">
+        <a class="team-header">
+          计算机工程研发中心
+        </a>
+        <p class="team-info">
+          研发中心创设于学院成立之初，积淀丰富、历史悠久，是计院最为老牌的一个团队。2001年，研发中心成立，至今已经18年历史，这么多年来，团队成员一直致力于互联网、安卓手机应用、数据库以及图形图像等技术的学习和开发。团队已有大批师兄师姐进入了百度、腾讯、华为、网易、阿里巴巴、金山等公司进行工作。
+        </p>
+        <p class="team-info">
+          如果你有出色的学习能力、对知识有近乎渴望的追求，以及良好的抗压力和团队协作力，那就加入我们吧！在这里和你的队友们一起打造属于你们的BAT之路！
+        </p>
+      </div>
       <div class="slide-outer">
         <ul class="slides">
           <input type="radio" name="radio-btn" id="img-1" checked />
@@ -376,22 +343,11 @@
           </li>
         </ul>
       </div>
-      <div class="about-text" title="立即报名">
-        <a class="team-header">
-          计算机工程研发中心
-        </a>
-        <p class="team-info">
-          研发中心创设于学院成立之初，积淀丰富、历史悠久，是计院最为老牌的一个团队。2001年，研发中心成立，至今已经18年历史，这么多年来，团队成员一直致力于互联网、安卓手机应用、数据库以及图形图像等技术的学习和开发。团队已有大批师兄师姐进入了百度、腾讯、华为、网易、阿里巴巴、金山等公司进行工作。
-        </p>
-        <p class="team-info">
-          如果你有出色的学习能力、对知识有近乎渴望的追求，以及良好的抗压力和团队协作力，那就加入我们吧！在这里和你的队友们一起打造属于你们的BAT之路！
-        </p>
-      </div>
       <div class="clrfix"></div>
     </div>
   </div>
   <!-- footer -->
-  <footer class="site-footer">
+  <!-- <footer class="site-footer">
     <div class="foot-container">
       <div class="row">
         <div class="row-left">
@@ -434,7 +390,7 @@
 
       </div>
     </div>
-  </footer>
+  </footer> -->
   <!--自定义提示弹出框-->
   <div class="box_overlay tips none"></div>
   <div id="animationTipBox" class=" tips none">

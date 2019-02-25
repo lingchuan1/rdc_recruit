@@ -199,10 +199,10 @@ $(function () {
                 validate: result.geetest_validate,
                 seccode: result.geetest_seccode
               },
-              beforeSend: function() {
+              beforeSend: function () {
                 b.loadRender();
               },
-              complete: function() {
+              complete: function () {
                 captchaObj.reset();
               },
               success: function (data) {
@@ -345,6 +345,10 @@ $(function () {
   a.findDimensions();
   if (!(/Android (\d+\.\d+)/.test(a.ua))) {
     window.onresize = a.findDimensions();
+  }
+  if (/Android (\d+\.\d+)/.test(a.ua)) {
+    var kk = $('.slides').width();
+    $('.slides,.slide').css('height', kk * 0.82);
   }
   a.fn();
   a.fn2();

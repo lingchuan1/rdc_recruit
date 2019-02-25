@@ -16,9 +16,10 @@ body {
     /* min-width: 768px; */
     color: #8f8f8f;
     background: white;
-    font-family: "Cardo", serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    width: 100%;
 }
 
 a {
@@ -56,10 +57,10 @@ p {
 
 .main_h {
     position: fixed;
-    max-height: 80px;
+    max-height: 3.5rem;
     z-index: 999;
     width: 100%;
-    padding-top: .8rem;
+    padding-top: .4rem;
     background: none;
     overflow: hidden;
     -webkit-transition: all 0.3s;
@@ -76,6 +77,7 @@ p {
 .open-nav .mobile-toggle {
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
+    background-color: hsla(0,0%,71%,.1)!important;
 }
 
 .sticky {
@@ -92,10 +94,10 @@ p {
     text-transform: uppercase;
     float: left;
     display: block;
-    margin-top: .4rem;
-    margin-left: 2rem;
+    margin-top: .3rem;
+    margin-left: .8rem;
     line-height: 1;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .logo img {
@@ -110,7 +112,7 @@ p {
 }
 
 .h-nav ul {
-    padding-top: .55rem;
+    padding-top: .5rem;
     float: left;
     text-align: center;
     width: 100%;
@@ -118,7 +120,7 @@ p {
 
 .h-nav ul li {
     width: 100%;
-    padding: 0.8rem 0;
+    padding: 0.5rem 0;
     margin: 0;
     border-bottom: 1px solid #f0f0f0;
     list-style-type: none;
@@ -128,7 +130,7 @@ p {
 .h-nav ul a {
     color: #888888;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     position: relative;
     line-height: 2rem;
 }
@@ -142,22 +144,22 @@ p {
 }
 
 .list_underline {
-    border-bottom: #4fa79b 2px solid;
-    display: none;
+    border-bottom: #d3d1d1 1px solid;
+    /* display: none; */
     position: absolute;
-    top: 20px;
+    top: 10px;
     width: 100%;
 }
 
 .b_fa {
-    font-size: 1.33em!important;
+    font-size: 1.3rem!important;
     padding-right: .6rem;
 }
 
 .mobile-toggle {
     display: block;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1rem;
     position: absolute;
     right: 22px;
     top: 0;
@@ -165,19 +167,18 @@ p {
     -webkit-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
     transition: all 200ms ease-in;
-    border: 1px solid transparent;
+    border: .05rem solid transparent;
     border-color: #ddd;
-    background-color: hsla(0,0%,71%,.1)!important;
     border-radius: 4px;
-    width: 3rem;
-    padding:0.6rem 0.5rem;
+    width: 2.4rem;
+    padding: 0.25rem 0.4rem;
 }
 
 
 .mobile-toggle span {
-    width: 2rem;
+    width: 1.5rem;
     height: .2rem;
-    margin:0.25rem 0;
+    margin: 0.25rem 0;
     border-radius: 1000px;
     background: #8f8f8f;
     display: block;
@@ -188,12 +189,12 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding: 0 2%;
+    /* padding: 0 2%; */
 }
 
 
 .content {
-    padding: 50px 2% 150px;
+    padding: 1rem 2% 5rem;
 }
 
 .banner {
@@ -303,7 +304,8 @@ p {
 
 .little-title {
     text-align: center;
-    margin: 35px 0;
+    margin: 2rem 0;
+    font-size: 1.8rem;
 }
 
 /*                             主部分的统一标题形式                            */
@@ -318,8 +320,9 @@ p {
 /*中文小标题*/
 
 .subtitle .lead1 {
-    font-size: 2em;
-    padding: 10px 0;
+    font-size: 2.2rem;
+    /* letter-spacing: 0.05rem; */
+    padding: .55rem 0;
     color: rgb(88, 88, 88);
     font-family: 微软雅黑, curwive, sans-serif;
     font-weight: 600;
@@ -327,6 +330,7 @@ p {
 
 .login_content {
     margin-top: 3px;
+    letter-spacing: 0.1rem;
 }
 
 #cline {
@@ -345,16 +349,17 @@ p {
 
 
 .direList {
-    margin: 10px 30px 30px 30px;
+    margin: -1rem 30px 30px 30px;
 }
 
 .direElement {
     text-align: center;
     width: 100%;
-    padding: 2.8rem 2.2rem;
+    padding: 2rem 1rem;
     cursor: pointer;
     border-radius: 3px;
     overflow: hidden;
+    margin-bottom: .5rem;
 }
 
 .direElement:hover {
@@ -384,12 +389,13 @@ p {
 /* teams-introduce */
 .team-text {
     width: 100%;
+    margin-bottom: 3rem;
 }
 
 .team-header {
     margin: 30px 0;
     color: #4fa79b;
-    font-size: 20px;
+    font-size: 1.3rem;
     display: block;
     cursor: pointer;
     text-align: center;
@@ -410,17 +416,15 @@ p {
 /* 关于研发 */
 
 .about-text {
-    display: inline-block;
-    float: right;
-    width: 48%;
-    margin-top: 2.2rem;
+    width: 100%;
+    margin-top: 1rem;
     margin-right: 4%;
 }
 
 .slide-outer {
-    display: inline-block;
-    width: 45%;
-    padding: 3.2rem 0 2rem 0;
+    display: inline-block; 
+    width: 100%;
+    padding: 3.2rem 5%;
     position: static;
 }
 
@@ -561,14 +565,14 @@ p {
     border-radius: 5px 5px 0px 0px;
     margin: auto;
     text-shadow: none;
-    text-align: left
+    text-align: center;
 }
 
 .form-countainer .form {
     border-radius: 5px;
     max-width: 700px;
     width: 100%;
-    margin: 5% auto;
+    margin:10% auto;
     margin-top: 1%;
     background-color: #FFFFFF;
     overflow: hidden;
@@ -596,7 +600,7 @@ p {
     border-radius: 0px 5px 5px 0px;
     border: 1px solid #eee;
     margin-bottom: 15px;
-    width: 75%;
+    width: 85%;
     height: 40px;
     float: left;
     padding: 0px 15px;
@@ -617,7 +621,7 @@ textarea {
 }
 
 .form-group {
-    overflow: hidden;
+    /* overflow: hidden; */
     clear: both;
 }
 
@@ -655,22 +659,15 @@ i {
     font-size: 18px;
 }
 
-.leftcontact {
-    width: 49.5%;
-    float: left;
-    border-right: 1px dotted #CCC;
+.form-contact {
+    width: 100%;
+    /* border-right: 1px dotted #CCC; */
     box-sizing: border-box;
-    padding: 0px 15px 0px 0px;
-}
-
-.rightcontact {
-    width: 49.5%;
-    float: right;
-    box-sizing: border-box;
-    padding: 0px 0px 0px 15px;
+    /* padding: 0px 15px 0px 0px; */
 }
 
 .validation {
+    clear: both;
     display: none;
     margin: 0 0 10px;
     font-weight: 400;
@@ -682,7 +679,7 @@ i {
     border: 1px solid #fff;
     display: none;
     text-align: center;
-    margin: 10px 0;
+    /* margin: 10px 0; */
     font-weight: 600;
     margin-bottom: 30px;
     /* background-color: #EBF6E0;
