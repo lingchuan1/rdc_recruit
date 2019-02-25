@@ -37,4 +37,8 @@ public class UserService {
             return "1";
     }
 
+    public User selectRand(){
+        User user = userMapper.selectRand();
+        return user;
+    }
 }

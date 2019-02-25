@@ -88,4 +88,12 @@ public class UserController {
         }
 
     }
+
+    @CrossOrigin
+    @IpRequest
+    @GetMapping(value = "/selectRand")
+    public User selectRand(){
+        User user = userService.selectRand();
+        return user;
+    }
 }
