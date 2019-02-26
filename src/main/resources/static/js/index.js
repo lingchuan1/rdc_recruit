@@ -11,14 +11,23 @@ $(function () {
 
     chooseDevice: function () {
       if (/(iPhone|iPad|iPod|iOS)/i.test(this.ua)) {
-        window.location.href = "indexB.html";
-        that.device = 3;
+        if (window.location.href.lastIndexOf('indexB.html') == -1) {
+          // window.location.href = "indexB.html";
+          this.device = 3;
+          console.log(this.device)
+        }
       } else if (/(Android)/i.test(this.ua)) {
-        window.location.href = "indexB.html";
-        that.device = 2;
+        if (window.location.href.lastIndexOf('indexB.html') == -1) {
+          // window.location.href = "indexB.html";
+          this.device = 2;
+          console.log(this.device)
+        }
       } else {
-        window.location.href = "index.html";
-        that.device = 1;
+        if (window.location.href.lastIndexOf('index.html') == -1) {
+          // window.location.href = "index.html";
+          this.device = 1;
+          console.log(this.device)
+        }
       };
     },
 
@@ -375,6 +384,9 @@ $(function () {
     var kk = $('.slides').width();
     $('.slides,.slide').css('height', kk * 0.82);
   }
+  var checkHide = setInterval(function () {
+    if ($('#welcome').css('opacity') == 0) { $('#welcome').hide(); clearInterval(checkHide) }
+  }, 1000)
 
 
   a.fn();

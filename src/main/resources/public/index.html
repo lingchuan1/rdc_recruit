@@ -5,13 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes,maximum-scale=2.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script language="javascript">
+    if (/(iPhone|iPad|iPod|iOS)/i.test(this.ua)) {
+      if (window.location.href.lastIndexOf('indexB.html') == -1) {
+        window.location.href = "indexB.html";
+      }
+    } else if (/(Android)/i.test(this.ua)) {
+      if (window.location.href.lastIndexOf('indexB.html') == -1) {
+        window.location.href = "indexB.html";
+      }
+    } else {
+      if (window.location.href.lastIndexOf('index.html') == -1) {
+        window.location.href = "index.html";
+      }
+    };
+  </script>
   <link rel="shortcut icon" href="http://rdc2019.cn:8080/image/logo.png" type="image/x-icon">
   <link rel='stylesheet' type='text/css' href="http://rdc2019.cn:8080/css/nav.css">
   <link rel='stylesheet' type='text/css' href="http://rdc2019.cn:8080/css/img-hover.css">
   <link rel='stylesheet' type='text/css' href="http://rdc2019.cn:8080/css/slides.css">
   <link rel="stylesheet" type="text/css" href="http://rdc2019.cn:8080/css/navigation-bar.css">
   <link rel="stylesheet" type="text/css" href="http://rdc2019.cn:8080/css/changealert.css">
-  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/font-awesome-4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" language="javascript" src="http://rdc2019.cn:8080/js/jquery-1.10.2.min.js"></script>
   <!-- <script type='application/javascript' src='js/fastclick.js'></script> -->
   <title>RDC招新系统</title>
@@ -94,7 +109,8 @@
     <div class="team-itrd">
       <div class="teams">
         <div class="figure-container">
-          <figure class="snip1091 green" title="立即报名"><img src="http://rdc2019.cn:8080/image/web2.jpg" alt="研发前端组" title="立即报名" />
+          <figure class="snip1091 green" title="立即报名"><img src="http://rdc2019.cn:8080/image/web2.jpg" alt="研发前端组"
+              title="立即报名" />
             <figcaption>
               <h2>Web <span>前端</span></h2>
             </figcaption><a></a>
@@ -122,7 +138,8 @@
       </div>
       <div class="teams">
         <div class="figure-container">
-          <figure class="snip1091 blue" title="立即报名"><img src="http://rdc2019.cn:8080/image/java1.jpg" alt="研发后台组" title="立即报名" />
+          <figure class="snip1091 blue" title="立即报名"><img src="http://rdc2019.cn:8080/image/java1.jpg" alt="研发后台组"
+              title="立即报名" />
             <figcaption>
               <h2>java <span>后台开发</span></h2>
             </figcaption><a></a>
@@ -147,7 +164,8 @@
       </div>
       <div class="teams">
         <div class="figure-container">
-          <figure class="snip1091 red" title="立即报名"><img src="http://rdc2019.cn:8080/image/Android2.png" alt="研发安卓组" title="立即报名" />
+          <figure class="snip1091 red" title="立即报名"><img src="http://rdc2019.cn:8080/image/Android2.png" alt="研发安卓组"
+              title="立即报名" />
             <figcaption>
               <h2>Android <span>移动开发</span></h2>
             </figcaption><a></a>
@@ -171,7 +189,8 @@
       </div>
       <div class="teams">
         <div class="figure-container">
-          <figure class="snip1091 yellow"><img src="http://rdc2019.cn:8080/image/bigdata1.jpg" alt="研发大数据组" title="立即报名" />
+          <figure class="snip1091 yellow"><img src="http://rdc2019.cn:8080/image/bigdata1.jpg" alt="研发大数据组"
+              title="立即报名" />
             <figcaption>
               <h2>大数据 <span></span></h2>
             </figcaption><a></a>
@@ -530,7 +549,7 @@
     <button class="okoButton tips none">ok</button>
   </div>
   <script src="http://rdc2019.cn:8080/js/gt.js"></script>
-  <script type="text/javascript" language="javascript" src="http://rdc2019.cn:8080/js/index.js"></script>
+  <script type="text/javascript" language="javascript" src="../static/js/index.js"></script>
 
 </body>
 
