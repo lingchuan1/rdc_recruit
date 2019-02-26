@@ -7,6 +7,20 @@ $(function () {
     winWidth: 0,
     ua: navigator.userAgent,
     address: 'http://rdc2019.cn/user',
+    device: 1,
+
+    chooseDevice: function () {
+      if (/(iPhone|iPad|iPod|iOS)/i.test(this.ua)) {
+        window.location.href = "indexB.html";
+        that.device = 3;
+      } else if (/(Android)/i.test(this.ua)) {
+        window.location.href = "indexB.html";
+        that.device = 2;
+      } else {
+        window.location.href = "index.html";
+        that.device = 1;
+      };
+    },
 
     findDimensions: function () {
       var that = this;
@@ -29,22 +43,24 @@ $(function () {
       // var detail = document.getElementById("detail");
       // detail.style.width = winWidth-4;
       $('.banner').css('min-height', that.winHeight);
-      if (/Android (\d+\.\d+)/.test(that.ua)) {
-        $('.banner').css('min-height', that.winHeight * 1.5);
-      }
+      // if (/Android (\d+\.\d+)/.test(that.ua)) {
+      //   $('.banner').css('min-height', that.winHeight * 1.5);
+      // }
     },
 
     //页面效果
     fn: function () {
       var that = this;
-      // 开头淡出淡入效果
-      if ($('.subtitle').hasClass('F-fade-in')) {
-        $('.subtitle').addClass('hold');
-        $('.subtitle').removeClass('F-fade-in');
-      } if ($('.direElement').hasClass('B-fade-in')) {
-        $('.direElement').addClass('hold');
-        $('.direElement').removeClass('B-fade-in');
-      }
+      setTimeout(function () {
+        // 开头淡出淡入效果
+        if ($('.subtitle').hasClass('F-fade-in')) {
+          $('.subtitle').addClass('hold');
+          $('.subtitle').removeClass('F-fade-in');
+        } if ($('.direElement').hasClass('B-fade-in')) {
+          $('.direElement').addClass('hold');
+          $('.direElement').removeClass('B-fade-in');
+        }
+      }, 3000)
       // h-nav滚动弹出
       $(window).scroll(function () {
 
@@ -350,11 +366,12 @@ $(function () {
     },
   }
 
+  a.chooseDevice();
+
   a.findDimensions();
-  if (!(/Android (\d+\.\d+)/.test(a.ua))) {
+  if (a.device == 1) {
     window.onresize = a.findDimensions();
-  }
-  if (/Android (\d+\.\d+)/.test(a.ua)) {
+  } else if (a.device == 2 || a.device == 3) {
     var kk = $('.slides').width();
     $('.slides,.slide').css('height', kk * 0.82);
   }
