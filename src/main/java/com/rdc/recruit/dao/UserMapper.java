@@ -4,6 +4,9 @@ import com.rdc.recruit.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 @Mapper
 @Component
 public interface UserMapper {
@@ -12,5 +15,22 @@ public interface UserMapper {
     int add(User user);
 
     @Select("select *from user where id >= (select floor(max(id)*rand()) from user) order by id limit 1;")
+    @Results(
+            {
+                    @Result(id=true,column = "id",property = "id"),
+                    @Result(column="student_id",property = "studentId"),
+                    @Result(column="profession_class",property = "professionClass")
+            }
+    )
     User selectRand();
+
+    @Select("select *from user where direction = #{direction}")
+    @Results(
+            {
+                    @Result(id=true,column = "id",property = "id"),
+                    @Result(column="student_id",property = "studentId"),
+                    @Result(column="profession_class",property = "professionClass")
+            }
+    )
+    ArrayList<User> selectByDirection(String direction);
 }
