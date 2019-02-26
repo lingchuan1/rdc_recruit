@@ -7,20 +7,26 @@ import com.rdc.recruit.service.UserService;
 import com.rdc.recruit.util.GeetestLib;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
-@RestController
-@RequestMapping("/user")
+@Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/")
+    public String Index(){
+        return "forward:indexB.html";
+    }
+
     @CrossOrigin
-    @GetMapping(value = "/init")
+    @ResponseBody
+    @GetMapping(value = "/user/init")
     public String geetestStart(HttpSession session){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
         String resStr = "{}";
@@ -44,7 +50,8 @@ public class UserController {
 
     @CrossOrigin
     @IpRequest
-    @PostMapping(value = "/validateAndAdd")
+    @ResponseBody
+    @PostMapping(value = "/user/validateAndAdd")
     public String validateAndAdd(User user,HttpSession session,String validate,String challenge,String seccode){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
         //从session中获取 server状态 与 userid
@@ -90,8 +97,8 @@ public class UserController {
     }
 
     @CrossOrigin
-    @IpRequest
-    @GetMapping(value = "/selectRand")
+    @ResponseBody
+    @GetMapping(value = "/user/selectRand")
     public User selectRand(){
         User user = userService.selectRand();
         return user;
