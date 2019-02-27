@@ -51,7 +51,7 @@ public class IpRequestAspect {
         //30秒内允许最多访问10次
         long count = redisTemplate.opsForValue().increment(ip);
         if(count>ipRequest.count()){
-            LogConfig.logger.info(ip + "不怀好意");
+            LogConfig.logger.warn(ip + "不怀好意");
             throw new IpRequestException();
         }else{
             if(count == 1){

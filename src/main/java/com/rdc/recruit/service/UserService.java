@@ -1,5 +1,6 @@
 package com.rdc.recruit.service;
 
+import com.rdc.recruit.config.LogConfig;
 import com.rdc.recruit.dao.UserMapper;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.util.StringUtil;
@@ -41,8 +42,10 @@ public class UserService {
             return "手机号错误";
         if(!StringUtil.isLegalName(user.getName()))
             return "姓名错误";
-        if(1!=userMapper.add(user))
+        if(1!=userMapper.add(user)) {
+            LogConfig.logger.warn(user.getName() + "报名失败！");
             return "报名失败";
+        }
         else
             return "1";
     }
