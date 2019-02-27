@@ -14,11 +14,15 @@ $(function () {
         if (window.location.href.lastIndexOf('indexB.html') == -1) {
           // window.location.href = "indexB.html";
           this.device = 3;
+          var kk = $('.slides').width();
+          $('.slides,.slide').css('height', kk * 0.76);
         }
       } else if (/(Android)/i.test(this.ua)) {
         if (window.location.href.lastIndexOf('indexB.html') == -1) {
           // window.location.href = "indexB.html";
           this.device = 2;
+          var kk = $('.slides').width();
+          $('.slides,.slide').css('height', kk * 0.76);
         }
       } else {
         if (window.location.href.lastIndexOf('index.html') == -1) {
@@ -48,7 +52,9 @@ $(function () {
       // //跟div赋值
       // var detail = document.getElementById("detail");
       // detail.style.width = winWidth-4;
-      $('.banner').css('min-height', that.winHeight);
+      if (a.device != 2 && a.device != 3) {
+        $('.banner').css('min-height', that.winHeight);
+      }
       // if (/Android (\d+\.\d+)/.test(that.ua)) {
       //   $('.banner').css('min-height', that.winHeight * 1.5);
       // }
@@ -75,6 +81,13 @@ $(function () {
         } else {
           $('.main_h').removeClass('sticky');
         }
+
+        if ($(window).scrollTop() > 140) {
+          $('.h_container').addClass('hidden');
+        } else {
+          $('.h_container').removeClass('hidden');
+        }
+
       });
       // Navigation Scroll - ljepo radi materem
       $('.h-nav a,.footer-links a').click(function (event) {
@@ -375,12 +388,8 @@ $(function () {
   a.chooseDevice();
 
   a.findDimensions();
-  if (a.device == 1) {
-    window.onresize = a.findDimensions();
-  } else{
-    var kk = $('.slides').width();
-    $('.slides,.slide').css('height', kk * 0.76);
-  }
+  window.onresize = a.findDimensions();
+
   var checkHide = setInterval(function () {
     if ($('#welcome').css('opacity') == 0) { $('#welcome').hide(); clearInterval(checkHide) }
   }, 1000)
