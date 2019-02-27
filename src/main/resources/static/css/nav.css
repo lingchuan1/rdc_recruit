@@ -232,7 +232,7 @@ p {
 
 .banner {
     position: relative;
-    background: #333 url(http://rdc2019.cn:8080/image/background.jpg) no-repeat center center fixed;
+    background: #333 url(http://122.13.4.239/resources/img/image/background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
