@@ -11,7 +11,7 @@
   <link rel='stylesheet' type='text/css' href="http://rdc2019.cn:8080/css/slides.css">
   <link rel="stylesheet" type="text/css" href="http://rdc2019.cn:8080/css/navigation-bar.css">
   <link rel="stylesheet" type="text/css" href="http://rdc2019.cn:8080/css/changealert.css">
-  <link rel="stylesheet" type="text/css" href="../static/css/aos.css">
+  <link rel="stylesheet" type="text/css" href="http://rdc2019.cn:8080/css/aos.css">
   <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
   <script language="javascript">
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
@@ -110,8 +110,8 @@
     <div class="team-itrd">
       <div class="teams">
         <div class="figure-container" data-aos="zoom-in">
-          <figure class="snip1091 green"  title="立即报名"><img src="http://122.13.4.239/resources/img/image/web2.jpg" alt="研发前端组"
-              title="立即报名" />
+          <figure class="snip1091 green" title="立即报名"><img src="http://122.13.4.239/resources/img/image/web2.jpg"
+              alt="研发前端组" title="立即报名" />
             <figcaption>
               <h2>Web <span>前端</span></h2>
             </figcaption><a></a>
@@ -139,8 +139,8 @@
       </div>
       <div class="teams">
         <div class="figure-container" data-aos="zoom-in">
-          <figure class="snip1091 blue" title="立即报名"><img src="http://122.13.4.239/resources/img/image/java1.jpg" alt="研发后台组"
-              title="立即报名" />
+          <figure class="snip1091 blue" title="立即报名"><img src="http://122.13.4.239/resources/img/image/java1.jpg"
+              alt="研发后台组" title="立即报名" />
             <figcaption>
               <h2>java <span>后台开发</span></h2>
             </figcaption><a></a>
@@ -164,9 +164,9 @@
         <div class="clrfix"></div>
       </div>
       <div class="teams">
-        <div class="figure-container"data-aos="zoom-in">
-          <figure class="snip1091 red" title="立即报名"><img src="http://122.13.4.239/resources/img/image/Android2.png" alt="研发安卓组"
-              title="立即报名" />
+        <div class="figure-container" data-aos="zoom-in">
+          <figure class="snip1091 red" title="立即报名"><img src="http://122.13.4.239/resources/img/image/Android2.png"
+              alt="研发安卓组" title="立即报名" />
             <figcaption>
               <h2>Android <span>移动开发</span></h2>
             </figcaption><a></a>
@@ -244,6 +244,12 @@
               <div class="validation">请输入真实姓名</div>
             </div>
             <div class="form-group">
+              <p>学号 <span>*</span></p>
+              <span class="icon-case"><i class="fa fa-info"></i></span>
+              <input type="text" name="studentId" id="studentId" data-rule="/[^\d]/g" maxlength="12" />
+              <div class="validation">输入格式错误</div>
+            </div>
+            <div class="form-group">
               <p>性别<span>*</span></p>
               <div class="sex-choices radio-choices">
                 <input type="radio" name="mb" id="mb1" value="0" />
@@ -252,26 +258,7 @@
                 <label for="mb2"><i class="fa fa-female fa-mb"></i>女</label>
               </div>
             </div>
-            <div class="form-group">
-              <p>学号 <span>*</span></p>
-              <span class="icon-case"><i class="fa fa-info"></i></span>
-              <input type="text" name="studentId" id="studentId" data-rule="/[^\d]/g" maxlength="12" />
-              <div class="validation">输入格式错误</div>
-            </div>
 
-            <div class="form-group">
-              <p>报名方向 <span>*</span></p>
-              <div class="team-choices radio-choices">
-                <input type="radio" name="rb" id="rb1" value="Web前端" />
-                <label for="rb1"><span>Web前端</span></label>
-                <input type="radio" name="rb" id="rb2" value="java后台" />
-                <label for="rb2">java后台</label>
-                <input type="radio" name="rb" id="rb3" value="Android" />
-                <label for="rb3">Android移动</label>
-                <input type="radio" name="rb" id="rb4" value="大数据" />
-                <label for="rb4">大数据</label>
-              </div>
-            </div>
             <!-- <div class="form-group">
               <p>E-mail <span>*</span></p>
               <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
@@ -306,7 +293,6 @@
                 data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné." />
               <div class="validation"></div>
             </div> -->
-
             <div class="form-group">
               <p>专业班级<span>*</span></p>
               <span class="icon-case"><i class="fa fa-location-arrow"></i></span>
@@ -320,7 +306,19 @@
               <input type="text" name="contact" id="contact" data-rule="/[^\d-+]/g" maxlength="11" />
               <div class="validation">输入格式错误</div>
             </div>
-
+            <div class="form-group">
+              <p>报名方向 <span>*</span></p>
+              <div class="team-choices radio-choices">
+                <input type="radio" name="rb" id="rb1" value="Web前端" />
+                <label for="rb1"><span>Web前端</span></label>
+                <input type="radio" name="rb" id="rb2" value="java后台" />
+                <label for="rb2">java后台</label>
+                <input type="radio" name="rb" id="rb3" value="Android" />
+                <label for="rb3">Android移动</label>
+                <input type="radio" name="rb" id="rb4" value="大数据" />
+                <label for="rb4">大数据</label>
+              </div>
+            </div>
             <!-- <div class="form-group">
               <p>Subject <span>*</span></p>
               <span class="icon-case"><i class="fa fa-comment-o"></i></span>
@@ -329,16 +327,16 @@
               <div class="validation"></div>
             </div> -->
 
-            <div class="form-group">
-              <p>自我介绍<span>*</span></p>
-              <span class="icon-case"><i class="fa fa-comments-o"></i></span>
-              <textarea name="introduction" id="introduction" rows="14" data-rule="required" maxlength="200"></textarea>
-              <div class="validation"></div>
-            </div>
-            <div class="form-group">
-              <div id="captcha2">
-                <p id="wait2" class="show">正在加载验证码......</p>
-              </div>
+          </div>
+          <div class="form-group">
+            <p>自我介绍<span>*</span></p>
+            <span class="icon-case"><i class="fa fa-comments-o"></i></span>
+            <textarea name="introduction" id="introduction" rows="14" data-rule="required" maxlength="400"></textarea>
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <div id="captcha2">
+              <p id="wait2" class="show">正在加载验证码......</p>
             </div>
           </div>
           <div class="clrfix"></div>
@@ -363,7 +361,7 @@
         <div style="clear: both;"></div>
       </div>
     </div>
-    <div class="teams" >
+    <div class="teams">
       <div class="slide-outer" data-aos="zoom-in">
         <ul class="slides">
           <input type="radio" name="radio-btn" id="img-1" checked />
@@ -484,7 +482,8 @@
         <div class="row-middle">
           <h6>More</h6>
           <p>了解更多，欢迎扫描如下二维码至2019招新Q群</p>
-          <div class="qqchats"><img src="http://122.13.4.239/resources/img/image/QQchats.jpg" alt="招新q群" title="欢迎加入"></div>
+          <div class="qqchats"><img src="http://122.13.4.239/resources/img/image/QQchats.jpg" alt="招新q群" title="欢迎加入">
+          </div>
         </div>
         <div class="clrfix"></div>
       </div>
@@ -550,8 +549,8 @@
     <button class="okoButton tips none">ok</button>
   </div>
   <script src="http://rdc2019.cn:8080/js/gt.js"></script>
-  <script type="text/javascript" language="javascript" src="../static/js/aos.js"></script>
-  <script type="text/javascript" language="javascript" src="../static/js/lazyload.js"></script>
+  <script type="text/javascript" language="javascript" src="http://rdc2019.cn:8080/js/aos.js"></script>
+  <script type="text/javascript" language="javascript" src="http://rdc2019.cn:8080/js/lazyload.js"></script>
   <script type="text/javascript" language="javascript" src="http://rdc2019.cn:8080/js/index.js"></script>
 
 </body>

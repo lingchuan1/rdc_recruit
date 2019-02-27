@@ -11,24 +11,26 @@ $(function () {
 
     chooseDevice: function () {
       if (/(iPhone|iPad|iPod|iOS)/i.test(this.ua)) {
-        if (window.location.href.lastIndexOf('indexB.html') == -1) {
+        // if (window.location.href.lastIndexOf('indexB.html') == -1) {
           // window.location.href = "indexB.html";
           this.device = 3;
           var kk = $('.slides').width();
-          $('.slides,.slide').css('height', kk * 0.76);
-        }
+          $('.slides,.slide').css('height', kk * 0.78);
+        // }
       } else if (/(Android)/i.test(this.ua)) {
-        if (window.location.href.lastIndexOf('indexB.html') == -1) {
+        // if (window.location.href.lastIndexOf('indexB.html') == -1) {
           // window.location.href = "indexB.html";
           this.device = 2;
           var kk = $('.slides').width();
-          $('.slides,.slide').css('height', kk * 0.76);
-        }
+          $('.slides,.slide').css('height', kk * 0.78);
+        // }
       } else {
-        if (window.location.href.lastIndexOf('index.html') == -1) {
+        // if (window.location.href.lastIndexOf('index.html') == -1) {
           // window.location.href = "index.html";
           this.device = 1;
-        }
+          var kk = $('.slides').width();
+          // $('.slides,.slide').css('height', kk * 0.8);
+        // }
       };
     },
 
