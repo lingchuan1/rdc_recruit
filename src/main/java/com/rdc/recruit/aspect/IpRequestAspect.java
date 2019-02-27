@@ -1,6 +1,7 @@
 package com.rdc.recruit.aspect;
 
 import com.rdc.recruit.annotation.IpRequest;
+import com.rdc.recruit.config.LogConfig;
 import com.rdc.recruit.exception.IpRequestException;
 import com.rdc.recruit.util.AccessUtil;
 import org.aspectj.lang.JoinPoint;
@@ -13,8 +14,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -52,6 +51,7 @@ public class IpRequestAspect {
         //30秒内允许最多访问10次
         long count = redisTemplate.opsForValue().increment(ip);
         if(count>ipRequest.count()){
+            LogConfig.logger.info(ip + "不怀好意");
             throw new IpRequestException();
         }else{
             if(count == 1){
