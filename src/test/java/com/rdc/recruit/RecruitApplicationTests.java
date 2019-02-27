@@ -1,7 +1,6 @@
 package com.rdc.recruit;
 
 import com.rdc.recruit.service.UserService;
-import com.rdc.recruit.util.StringUtil;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Test;
 import org.junit.runner.RunWith;

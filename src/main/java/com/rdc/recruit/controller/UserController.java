@@ -2,6 +2,7 @@ package com.rdc.recruit.controller;
 
 import com.rdc.recruit.annotation.IpRequest;
 import com.rdc.recruit.config.GeetestConfig;
+import com.rdc.recruit.config.LogConfig;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.service.UserService;
 import com.rdc.recruit.util.GeetestLib;
@@ -91,6 +92,7 @@ public class UserController {
             // 验证失败
             jsonObject.put("result","error");
             jsonObject.put("message","验证失败");
+            LogConfig.logger.warn(user.getName() + "验证失败！");
             return jsonObject.toString();
         }
 
