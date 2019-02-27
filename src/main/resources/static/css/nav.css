@@ -27,6 +27,27 @@ body {
 
 .h_container{
     margin-top: -30px;
+    -moz-transition: opacity 1s ease, -moz-transform 1s ease;
+    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+    -ms-transition: opacity 1s ease, -ms-transform 1s ease;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.h_container.hidden {
+    -moz-pointer-events: none;
+    -webkit-pointer-events: none;
+    -ms-pointer-events: none;
+    pointer-events: none;
+    -moz-transform: translateY(4rem);
+    -webkit-transform: translateY(4rem);
+    -ms-transform: translateY(4rem);
+    transform: translateY(4rem);
+    -moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease, visibility 0.5s;
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease, visibility 0.5s;
+    -ms-transition: opacity 0.5s ease, -ms-transform 0.5s ease, visibility 0.5s;
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .main_h {
@@ -232,7 +253,7 @@ p {
 
 .banner {
     position: relative;
-    background: #333 url(http://122.13.4.239/resources/img/image/background.jpg) no-repeat center center fixed;
+    background: #333 url(http://122.13.4.239/resources/img/image/banner1.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -377,6 +398,7 @@ p {
     font-weight: bold; */
     overflow: hidden;
     font-family: 华文新魏, 微软雅黑, curwive, sans-serif;
+    line-height: 25px;
 }
 
 /*实现英文左边的线条*/
@@ -520,11 +542,11 @@ p {
 /* footer */
 
 .site-footer {
-    background-color: #3c3d41;
+    background-color: #212121;
     padding: 10px 0 20px;
     font-size: 15px;
     line-height: 24px;
-    color: #737373;
+    color: #929292;
 }
 
 .site-footer hr {
@@ -546,7 +568,7 @@ p {
 }
 
 .site-footer a {
-    color: #737373;
+    color: #929292;
 }
 
 .site-footer a:hover {
@@ -564,7 +586,7 @@ p {
 }
 
 .footer-links a {
-    color: #737373
+    color: #929292
 }
 
 .footer-links a:active, .footer-links a:focus, .footer-links a:hover {
@@ -687,7 +709,7 @@ p {
     border: 1px solid #eee;
     margin-bottom: 15px;
     width: 75%;
-    height: 40px;
+    height: 42px;
     float: left;
     padding: 0px 15px;
 }
@@ -766,6 +788,7 @@ i {
     font-weight: 400;
     font-size: 13px;
     color: #DE5959;
+    clear: both;
 }
 
 #sendmessage {

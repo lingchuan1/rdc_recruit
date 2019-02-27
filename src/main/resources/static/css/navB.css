@@ -354,7 +354,7 @@ p {
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: .5rem;
-    box-shadow: 3px #ccc;
+    box-shadow: 4px 4px 15px #ccc;
 }
 
 .direElement:hover {
@@ -398,7 +398,7 @@ p {
 }
 
 .team-info {
-    font-size: 15px;
+    font-size: 0.9rem;
     line-height: 2.3em;
     color: #565656;
     margin-bottom: 5px;
@@ -597,7 +597,7 @@ p {
     border: 1px solid #eee;
     margin-bottom: 15px;
     width: 85%;
-    height: 40px;
+    height: 42px;
     float: left;
     padding: 0px 15px;
 }
