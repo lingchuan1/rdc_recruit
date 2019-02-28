@@ -8,7 +8,7 @@ html {
     font-size: 18px;
     line-height: 1.15;
     height: 100%;
-    font-family:  Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
 body {
@@ -16,7 +16,7 @@ body {
     /* min-width: 768px; */
     color: #8f8f8f;
     background: white;
-    font-family:Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     width: 100%;
@@ -633,11 +633,14 @@ textarea {
     text-align: center;
     line-height: 40px;
     font-size: 1.2rem;
-
 }
 
 i {
     color: rgb(248, 248, 248);
+}
+
+.h-nav i {
+    color: #555;
 }
 
 .contentform {
