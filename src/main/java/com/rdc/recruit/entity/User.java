@@ -10,6 +10,7 @@ public class User {
     private String direction;  //方向(前端，后台，安卓，大数据)
     private String contact;  //手机号码
     private String introduction;  //自我介绍
+    private String ip;
 
     public Integer getId() {
         return id;
@@ -74,6 +75,14 @@ public class User {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     @Override

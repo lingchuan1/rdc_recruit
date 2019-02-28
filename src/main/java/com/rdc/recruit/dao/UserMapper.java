@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @Component
 public interface UserMapper {
 
-    @Insert("insert into user(student_id,name,sex,profession_class,direction,contact,introduction) values (#{studentId},#{name},#{sex},#{professionClass},#{direction},#{contact},#{introduction})")
+    @Insert("insert into user(student_id,name,sex,profession_class,direction,contact,introduction,ip) values (#{studentId},#{name},#{sex},#{professionClass},#{direction},#{contact},#{introduction},#{ip})")
     int add(User user);
 
     @Select("select *from user where id >= (select floor(max(id)*rand()) from user) order by id limit 1;")

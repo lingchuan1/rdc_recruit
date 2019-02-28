@@ -5,12 +5,14 @@ import com.rdc.recruit.config.GeetestConfig;
 import com.rdc.recruit.config.LogConfig;
 import com.rdc.recruit.entity.User;
 import com.rdc.recruit.service.UserService;
+import com.rdc.recruit.util.AccessUtil;
 import com.rdc.recruit.util.GeetestLib;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
@@ -53,7 +55,7 @@ public class UserController {
     @IpRequest
     @ResponseBody
     @PostMapping(value = "/user/validateAndAdd")
-    public String validateAndAdd(User user,HttpSession session,String validate,String challenge,String seccode){
+    public String validateAndAdd(User user, HttpServletRequest request, HttpSession session, String validate, String challenge, String seccode){
         GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), GeetestConfig.isNewfailback());
         //从session中获取 server状态 与 userid
         int gt_server_status_code = (int)session.getAttribute(gtSdk.gtServerStatusSessionKey);
@@ -78,6 +80,7 @@ public class UserController {
         if (gtResult == 1) {
             // 验证成功
             System.out.println("验证成功");
+            user.setIp(AccessUtil.getIpAddress(request));
             String resStr = userService.add(user);
             System.out.println(resStr);
             if(resStr.equals("1")){
