@@ -57,7 +57,7 @@ public class UserService {
 
     public void getList(String direction) throws IOException, InvalidFormatException {
         ArrayList<User> users = userMapper.selectByDirection(direction);
-        String path = "E:/excel/test.xlsx";
+        String path = "E:/excel/" + direction +".xlsx";
         InputStream is = Files.newInputStream(Paths.get(path));
 
         Workbook workbook = WorkbookFactory.create(is);
