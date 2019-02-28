@@ -6,7 +6,7 @@
     /* position: relative; */
 }
 
-html{
+html {
     font-size: 16px;
 }
 
@@ -25,7 +25,7 @@ body {
     z-index: 99;
 }
 
-.h_container{
+.h_container {
     margin-top: -30px;
     -moz-transition: opacity 1s ease, -moz-transform 1s ease;
     -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
@@ -225,7 +225,7 @@ body {
 body {
     color: #8f8f8f;
     background: white;
-    font-family: '微软雅黑',"Cardo", serif;
+    font-family: '微软雅黑', "Cardo", serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
 }
@@ -751,13 +751,11 @@ textarea {
     font-size: 1.2rem;
 }
 
-
-
 i {
     color: rgb(248, 248, 248);
 }
 
-.h-nav i{
+.h-nav i {
     color: #555;
 }
 
@@ -817,7 +815,6 @@ i {
     padding: 13px 40px 13px 18px;
     border-radius: 3px;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.03);
-
     color: #fc4c4c;
     border: 1px solid #fc4c4c;
     background-color: rgb(246, 224, 226);
@@ -914,4 +911,3 @@ input[type="checkbox"]:checked+label::before, input[type="radio"]:checked+label:
     color: #666;
     margin: 0;
 }
-
