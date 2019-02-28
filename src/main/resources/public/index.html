@@ -240,13 +240,13 @@
             <div class="form-group">
               <p>姓名 <span>*</span></p>
               <span class="icon-case"><i class="fa fa-user"></i></span>
-              <input type="text" name="name" id="name" data-rule="'/[^\u4e00-\u9fa5|a-z|A-Z]/g'" maxlength="6" />
+              <input type="text" name="name" id="name" data-rule="'/[^\u4e00-\u9fa5|a-z|A-Z]/g'" maxlength="10" />
               <div class="validation">请输入真实姓名</div>
             </div>
             <div class="form-group">
               <p>学号 <span>*</span></p>
               <span class="icon-case"><i class="fa fa-info"></i></span>
-              <input type="text" name="studentId" id="studentId" data-rule="/[^\d]/g" maxlength="12" />
+              <input type="text" name="studentId" id="studentId" data-rule="/[^\d]/g" maxlength="10" />
               <div class="validation">输入格式错误</div>
             </div>
             <div class="form-group">
@@ -334,7 +334,7 @@
             <textarea name="introduction" id="introduction" rows="14" data-rule="required" maxlength="400"></textarea>
             <div class="validation"></div>
           </div>
-          <div class="form-group">
+          <div class="form-group" style="text-align:center">
             <div id="captcha2">
               <p id="wait2" class="show">正在加载验证码......</p>
             </div>
