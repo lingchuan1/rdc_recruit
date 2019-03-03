@@ -30,7 +30,7 @@ public class RecruitApplicationTests {
 
     @Test
     public void test() throws IOException, InvalidFormatException {
-        userService.getList("大数据");
+        userService.getList("Android");
     }
 }
 

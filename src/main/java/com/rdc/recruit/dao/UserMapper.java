@@ -3,6 +3,7 @@ package com.rdc.recruit.dao;
 import com.rdc.recruit.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 @Component
 public interface UserMapper {
 
-    @Insert("insert into user(student_id,name,sex,profession_class,direction,contact,introduction) values (#{studentId},#{name},#{sex},#{professionClass},#{direction},#{contact},#{introduction})")
+    @Insert("insert into user(student_id,name,sex,profession_class,direction,contact,introduction,ip) values (#{studentId},#{name},#{sex},#{professionClass},#{direction},#{contact},#{introduction},#{ip})")
     int add(User user);
 
     @Select("select *from user where id >= (select floor(max(id)*rand()) from user) order by id limit 1;")
@@ -33,4 +34,10 @@ public interface UserMapper {
             }
     )
     ArrayList<User> selectByDirection(String direction);
+
+    @Select("select count(*) from user where ip = #{ip}")
+    int ipCount(String ip);
+
+    @Select("select count(*) from user where student_id = #{studentId}")
+    int studentIdCount(String studentId);
 }

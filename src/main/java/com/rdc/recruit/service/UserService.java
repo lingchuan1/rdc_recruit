@@ -42,6 +42,12 @@ public class UserService {
             return "手机号错误";
         if(!StringUtil.isLegalName(user.getName()))
             return "姓名错误";
+        if (userMapper.studentIdCount(user.getStudentId()) >= 2){
+            return "你已报名超过两次";
+        }
+        if (userMapper.ipCount(user.getIp()) >= 5){
+            return "你已报名太多次";
+        }
         if(1!=userMapper.add(user)) {
             LogConfig.logger.warn(user.getName() + "报名失败！");
             return "报名失败";
@@ -57,7 +63,7 @@ public class UserService {
 
     public void getList(String direction) throws IOException, InvalidFormatException {
         ArrayList<User> users = userMapper.selectByDirection(direction);
-        String path = "E:/excel/test.xlsx";
+        String path = "E:/excel/" + direction +".xlsx";
         InputStream is = Files.newInputStream(Paths.get(path));
 
         Workbook workbook = WorkbookFactory.create(is);
