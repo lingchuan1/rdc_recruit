@@ -3,6 +3,7 @@ package com.rdc.recruit.dao;
 import com.rdc.recruit.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -33,4 +34,10 @@ public interface UserMapper {
             }
     )
     ArrayList<User> selectByDirection(String direction);
+
+    @Select("select count(*) from user where ip = #{ip}")
+    int ipCount(String ip);
+
+    @Select("select count(*) from user where student_id = #{studentId}")
+    int studentIdCount(String studentId);
 }
