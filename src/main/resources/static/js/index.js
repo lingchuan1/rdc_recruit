@@ -223,7 +223,7 @@ $(function () {
           var studentId = $('#studentId').val();
           var sex = $('input:radio[name="mb"]:checked').val();
           var direction = $('input:radio[name="rb"]:checked').val();
-          if (name && contact && professionClass && introduction && studentId && sex && direction) {
+          if (name && contact && professionClass.trim() && introduction.trim() && studentId && sex && direction) {
             $.ajax({
               url: a.address + '/validateAndAdd',
               type: 'POST',
